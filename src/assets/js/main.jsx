@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import AppContainer from './AppContainer';
 
-ReactDOM.render(<AppContainer />, document.getElementById('app')); // eslint-disable-line
+ReactDOM.render(<AppContainer />, document.getElementById('app'));
 
 if (module.hot) {
   module.hot.accept();

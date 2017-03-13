@@ -16,7 +16,7 @@ module.exports = {
       // only- means to only hot reload for successful updates
       'webpack/hot/only-dev-server',
 
-      './src/assets/js/main.js',
+      './src/assets/js/main.jsx',
     ],
   },
   module: {

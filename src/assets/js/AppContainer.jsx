@@ -1,9 +1,10 @@
 import React from 'react';
 
-export default class AppContainer extends React.Component { // eslint-disable-line
-  render() {
-    return (
-      <div>Teste</div>
-    );
-  }
-}
+import ShowQuote from './ShowQuote/ShowQuote';
+
+const AppContainer = () => (
+  <div>
+    <ShowQuote quote="Teste" />
+  </div>);
+
+export default AppContainer;

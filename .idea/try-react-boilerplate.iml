@@ -8,5 +8,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="react" level="application" />
+    <orderEntry type="library" name="react-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="react-dom" level="application" />
+    <orderEntry type="library" name="react-css-modules-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="react-props-decorators-DefinitelyTyped" level="application" />
   </component>
 </module>
