@@ -4,19 +4,70 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.config.dev.js",
-    "build": "webpack --config webpack.config.prod.js"
+    "prestart": "babel-node --presets=es2015 tools/startMessage.js",
+    "start": "babel-node --presets=es2015 tools/srcServer.js",
+    "build": "webpack --config webpack.config.prod.js",
+    "lint": "npm-run-all lint:*",
+    "lint:js": "eslint \"./src/assets/js/!(vendor)/**/*.js{,x}\" \"./src/assets/js/*.js{,x}\" tools",
+    "lint:scss": "stylelint \"./src/assets/styles/*.scss\" \"./src/assets/styles/**/*.scss\"",
+    "clean-dist": "npm run remove-dist && mkdir dist",
+    "remove-dist": "rimraf dist",
+    "precommit": "npm run lint",
+    "prepush": "npm-run-all --parallel lint test",
+    "test": "mocha --reporter progress ./tools/testSetup.js \"src/**/*.test.jsx\"",
+    "test:watch": "npm run test -- --watch"
+  },
+  "eslintConfig": {
+    "env": {
+      "es6": true,
+      "browser": true,
+      "node": true,
+      "jquery": true,
+      "mocha": true
+    },
+    "extends": [
+      "airbnb"
+    ],
+    "plugins": [
+      "react",
+      "jsx-a11y",
+      "chai-friendly"
+    ],
+    "globals": {
+      "window": true,
+      "jQuery": true,
+      "chai": true,
+      "expect": true,
+      "sinon": true,
+      "$": true
+    },
+    "rules": {
+      "no-unused-expressions": 0,
+      "chai-friendly/no-unused-expressions": 2
+    },
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    }
   },
   "dependencies": {
+    "babel-cli": "^6.24.0",
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
     "babel-polyfill": "^6.23.0",
     "babel-preset-react": "^6.23.0",
+    "chai": "^3.5.0",
+    "chalk": "^1.1.3",
     "css-loader": "^0.26.2",
     "eslint": "^3.16.1",
     "eslint-loader": "^1.6.3",
     "eslint-plugin-react": "^6.10.0",
+    "express": "^4.15.2",
     "html-webpack-plugin": "^2.28.0",
+    "open": "0.0.5",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-hot-loader": "next",
@@ -26,17 +77,43 @@
     "redux": "^3.6.0",
     "sass-loader": "^6.0.2",
     "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.4.1"
+    "webpack-dev-middleware": "^1.10.1",
+    "webpack-dev-server": "^2.4.1",
+    "webpack-hot-middleware": "^2.17.1"
   },
   "devDependencies": {
+    "autoprefixer": "^6.7.7",
     "babel-eslint": "^7.1.1",
     "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "babel-register": "^6.24.0",
     "babel-runtime": "^6.23.0",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.26.4",
+    "dsv-loader": "^2.0.0",
     "eslint": "^3.16.1",
     "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-chai-friendly": "^0.2.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
-    "eslint-plugin-react": "^6.10.0"
+    "eslint-plugin-react": "^6.10.0",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.10.1",
+    "html-loader": "^0.4.5",
+    "husky": "^0.13.2",
+    "imports-loader": "^0.7.1",
+    "jsdom": "^9.12.0",
+    "json-loader": "^0.5.4",
+    "mocha": "^3.2.0",
+    "npm-run-all": "^4.0.2",
+    "postcss-loader": "^1.3.3",
+    "react-hot-loader": "^3.0.0-beta.6",
+    "sass-loader": "^6.0.3",
+    "sinon": "^2.1.0",
+    "style-loader": "^0.14.1",
+    "stylelint-config-standard": "^16.0.0",
+    "stylelint-webpack-plugin": "^0.7.0",
+    "url-loader": "^0.5.8"
   }
 }

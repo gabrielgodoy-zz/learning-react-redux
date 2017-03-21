@@ -26,7 +26,7 @@ Project description
 * [Husky](https://github.com/typicode/husky) creates git hooks to prevent bad commits
 * [editorconfig](http://editorconfig.org/) is a tool for maintaining consistent coding styles between different editors and IDEs
 * [stylelint](https://github.com/stylelint/stylelint) is a CSS linter
-* [ESLint](https://github.com/eslint/eslint)
+* [ESLint](https://github.com/eslint/eslint)  is a linter for JS
     * [eslint-config-airbnb](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb)
     * [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import)
     * [eslint-plugin-react](https://github.com/yannickcr/eslint-plugin-react)
@@ -36,6 +36,10 @@ Project description
 
 ## Framework
 
+* [React](https://github.com/facebook/react)
+  * [React-router](https://github.com/ReactTraining/react-router)
+* [Redux](https://github.com/reactjs/redux/tree/master/logo)
+
 ---
 
 ## Style
@@ -43,6 +47,21 @@ Project description
 ---
 
 ## Test and coverage
+
+* [Istanbul](https://github.com/gotwarlost/istanbul) to check coverage
+* [Mocha](https://github.com/mochajs/mocha) as the test framework 
+* [Chai](https://github.com/chaijs/chai) for assertions in Mocha
+* [Sinon](https://github.com/sinonjs/sinon) for test spies, stubs and mocks
+
+### Rules
+The minimum limit for code coverage is set to 80% in all aspects:
+
+* Statements > 80% 
+* Branches > 80% 
+* Functions > 80% 
+* Lines > 80%
+ 
+If code coverage is less than that you will not be able to commit or push on the project.
 
 ---
 

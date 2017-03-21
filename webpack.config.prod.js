@@ -1,32 +1,77 @@
 const path = require('path');
 const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: {
     app: [
-      './src/assets/js/main.js',
+      './src/assets/js/main.jsx',
     ],
   },
   module: {
     rules: [
-      {
-        enforce: 'pre',
-        test: /\.jsx?$/,
-        loader: 'eslint-loader',
-      },
       {
         test: /\.jsx?$/,
         use: [
           {
             loader: 'babel-loader',
             options: {
-              presets: [['es2015', { modules: false }]],
+              presets: [['es2015', { modules: false }], 'stage-0', 'react'],
             },
           },
         ],
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.scss$/,
+        enforce: 'pre',
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                discardComments: {
+                  removeAll: true,
+                },
+                minimize: true,
+              },
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins() {
+                  return [autoprefixer({
+                    browsers: ['> 1%', 'last 2 versions'],
+                  })];
+                },
+              },
+            },
+            'sass-loader',
+            {
+              loader: 'import-glob-loader',
+            },
+          ],
+        }),
+      },
+      {
+        test: /\.html$/,
+        loader: 'html-loader',
+      },
+      {
+        test: /\.(png|jpe?g|gif|webm|mp4|ogv|txt|mp3|ogg|wav|pdf)$/,
+        loader: 'file-loader',
+        options: {
+          context: path.resolve(__dirname, './src'),
+          name: '[path][name].[ext]',
+        },
       },
     ],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -34,9 +79,11 @@ module.exports = {
       filename: 'index.html',
       template: './src/index.html',
     }),
+    new ExtractTextPlugin('main.css'),
   ],
   output: {
     filename: 'bundle.js',
-    path: path.join(`${__dirname}dist`),
+    publicPath: '/',
+    path: path.resolve('dist'),
   },
 };

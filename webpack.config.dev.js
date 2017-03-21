@@ -1,21 +1,12 @@
 const path = require('path');
 const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
     app: [
-      // activate HMR for React
-      'react-hot-loader/patch',
-
-      // bundle the client for webpack-dev-server
-      // and connect to the provided endpoint
-      'webpack-dev-server/client?http://localhost:8080',
-
-      // bundle the client for hot reloading
-      // only- means to only hot reload for successful updates
-      'webpack/hot/only-dev-server',
-
+      'webpack-hot-middleware/client',
       './src/assets/js/main.jsx',
     ],
   },
@@ -33,12 +24,52 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              presets: [['es2015', { modules: false }], 'react'],
+              presets: [['es2015', { modules: false }], 'stage-0', 'react'],
               plugins: ['babel-plugin-transform-runtime', 'react-hot-loader/babel'],
             },
           },
         ],
         exclude: /node_modules/,
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              root: './dist/images',
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins() {
+                return [autoprefixer({
+                  browsers: ['> 1%', 'last 2 versions'],
+                })];
+              },
+            },
+          },
+          {
+            loader: 'sass-loader',
+          },
+          {
+            loader: 'import-glob-loader',
+          },
+        ],
+      },
+      {
+        test: /\.html$/,
+        loader: 'html-loader',
+      },
+      {
+        test: /\.(png|jpe?g|gif|webm|mp4|ogv|txt|mp3|ogg|wav|pdf)$/,
+        loader: 'file-loader',
+        options: {
+          context: path.resolve(__dirname, './src'),
+          name: '[path][name].[ext]',
+        },
       },
     ],
   },
@@ -64,9 +95,12 @@ module.exports = {
   devServer: {
     hot: true,
     inline: true,
+    port: 3000,
+    contentBase: './src',
   },
   output: {
     filename: 'bundle.js',
+    publicPath: '/',
     path: path.join(`${__dirname}dist`),
   },
 };

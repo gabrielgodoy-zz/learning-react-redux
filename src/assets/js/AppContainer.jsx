@@ -4,7 +4,7 @@ import ShowQuote from './ShowQuote/ShowQuote';
 
 const AppContainer = () => (
   <div>
-    <ShowQuote quote="Teste" />
+    <ShowQuote quote="Testsse" />
   </div>);
 
 export default AppContainer;
