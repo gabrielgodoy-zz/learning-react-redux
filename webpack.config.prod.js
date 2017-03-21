@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -68,6 +69,14 @@ module.exports = {
           name: '[path][name].[ext]',
         },
       },
+      {
+        test: /\.json$/,
+        use: ['json-loader'],
+      },
+      {
+        test: /\.(eot|otf|woff|woff2|ttf|svg)$/,
+        use: ['url-loader?name=fonts/[name].[ext]'],
+      },
     ],
   },
   resolve: {
@@ -80,6 +89,12 @@ module.exports = {
       template: './src/index.html',
     }),
     new ExtractTextPlugin('main.css'),
+    new CopyWebpackPlugin([
+      {
+        from: './src/assets/data',
+        to: './data',
+      },
+    ]),
   ],
   output: {
     filename: 'bundle.js',

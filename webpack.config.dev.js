@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -71,6 +72,14 @@ module.exports = {
           name: '[path][name].[ext]',
         },
       },
+      {
+        test: /\.json$/,
+        use: ['json-loader'],
+      },
+      {
+        test: /\.(eot|otf|woff|woff2|ttf|svg)$/,
+        use: ['url-loader?name=fonts/[name].[ext]'],
+      },
     ],
   },
   resolve: {
@@ -91,6 +100,12 @@ module.exports = {
 
     // do not emit compiled assets that include errors
     new webpack.NoEmitOnErrorsPlugin(),
+    new CopyWebpackPlugin([
+      {
+        from: './src/assets/data',
+        to: './data',
+      },
+    ]),
   ],
   devServer: {
     hot: true,
