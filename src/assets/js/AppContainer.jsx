@@ -1,19 +1,32 @@
 import React from 'react';
-import axios from 'axios';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+} from 'react-router-dom';
 
-import ShowQuote from './components/ShowQuote/ShowQuote';
-
-axios.get('http://localhost:3000/data/data.json')
-     .then((response) => {
-       console.log('JSON: ', response);
-     })
-     .catch((error) => {
-       console.log(error);
-     });
+import MainHeader from './components/MainHeader/MainHeader';
+import Home from './components/Home/Home';
+import About from './components/About/About';
+import Topics from './components/Topics/Topics';
 
 const AppContainer = () => (
   <div>
-    <ShowQuote quote="Teste" />
-  </div>);
+    <MainHeader title="This is the header" />
+    <Router>
+      <div>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/topics">Topics</Link></li>
+        </ul>
+
+        <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/topics" component={Topics} />
+      </div>
+    </Router>
+  </div>
+);
 
 export default AppContainer;
