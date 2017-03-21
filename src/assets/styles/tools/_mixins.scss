@@ -1,0 +1,13 @@
+@mixin setFontSizeAndLineHeight($font-size, $line-height) {
+  font-size: calcula-em($font-size);
+  line-height: $line-height/$font-size;
+}
+
+@mixin fontSize($size) {
+  font-size: $size;
+  font-size: calculate-rem($size);
+}
+
+@mixin centraliza($left, $top) {
+  transform: translate($left, $top);
+}

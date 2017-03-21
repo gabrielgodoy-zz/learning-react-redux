@@ -1,0 +1,13 @@
+@function calcula-em($numero) {
+  @return $numero / 16 * 1em;
+}
+
+@function letterSpacing($numero) {
+  @return $numero / 1000 * 1em;
+}
+
+@function calculate-rem($size) {
+  $remSize: $size / 16px;
+
+  @return #{$remSize}rem;
+}

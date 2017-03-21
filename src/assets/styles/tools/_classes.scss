@@ -1,0 +1,11 @@
+.clearfix {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+.flip-it {
+  transform: scaleX(-1);
+}

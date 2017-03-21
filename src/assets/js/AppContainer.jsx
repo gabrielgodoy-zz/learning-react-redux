@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-import ShowQuote from './ShowQuote/ShowQuote';
+import ShowQuote from './components/ShowQuote/ShowQuote';
 
 axios.get('http://localhost:3000/data/data.json')
      .then((response) => {
