@@ -6,9 +6,9 @@ import {
 } from 'react-router-dom';
 
 import MainHeader from './components/MainHeader/MainHeader';
-import Home from './components/Home/Home';
-import About from './components/About/About';
-import Topics from './components/Topics/Topics';
+import Home from './pages/Home/Home';
+import About from './pages/About/About';
+import Topics from './pages/Topics/Topics';
 
 const AppContainer = () => (
   <div>

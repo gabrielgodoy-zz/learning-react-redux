@@ -12,9 +12,9 @@ const Topic = ({ match }) => (
 
 Topic.propTypes = {
   match: PropTypes.shape({
-    params: {
-      topicId: PropTypes.string.isRequired,
-    },
+    params: PropTypes.shape({
+      topicId: PropTypes.string,
+    }),
   }).isRequired,
 };
 
@@ -51,7 +51,9 @@ const Topics = ({ match }) => (
 );
 
 Topics.propTypes = {
-  match: PropTypes.shape({ url: PropTypes.string.isRequired }).isRequired,
+  match: PropTypes.shape({
+    url: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default Topics;

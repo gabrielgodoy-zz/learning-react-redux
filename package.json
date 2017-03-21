@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "prestart": "babel-node --presets=es2015 tools/startMessage.js",
-    "start": "babel-node --presets=es2015 tools/srcServer.js",
+    "start": "babel-node --presets=es2015 tools/server.js",
     "build": "webpack --config webpack.config.prod.js",
     "lint": "npm-run-all lint:*",
     "lint:js": "eslint \"./src/assets/js/!(vendor)/**/*.js{,x}\" \"./src/assets/js/*.js{,x}\" tools",
@@ -75,7 +75,6 @@
     "react-dom": "^15.4.2",
     "react-hot-loader": "next",
     "react-redux": "^5.0.3",
-    "react-router": "^4.0.0",
     "react-router-dom": "^4.0.0",
     "react-router-redux": "^4.0.8",
     "redux": "^3.6.0",
