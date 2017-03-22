@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Route,
   Link,
 } from 'react-router-dom';
@@ -13,7 +13,7 @@ import Topics from './pages/Topics/Topics';
 const AppContainer = () => (
   <div>
     <MainHeader title="This is the header" />
-    <Router>
+    <BrowserRouter>
       <div>
         <ul>
           <li><Link to="/">Home</Link></li>
@@ -25,7 +25,7 @@ const AppContainer = () => (
         <Route path="/about" component={About} />
         <Route path="/topics" component={Topics} />
       </div>
-    </Router>
+    </BrowserRouter>
   </div>
 );
 

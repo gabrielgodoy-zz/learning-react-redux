@@ -10,8 +10,10 @@ const port = 3000;
 const app = express();
 const compiler = webpack(webpackConfig);
 
+// serve static assets normally
+app.use(express.static(`${__dirname}/public`));
+
 app.use(require('webpack-dev-middleware')(compiler, {
-  noInfo: true,
   publicPath: webpackConfig.output.publicPath,
 }));
 app.use(require('webpack-hot-middleware')(compiler));
