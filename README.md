@@ -57,7 +57,7 @@ Experimentation project with nice tech put together
 * [Chai](https://github.com/chaijs/chai) for assertions in Mocha
 * [Sinon](https://github.com/sinonjs/sinon) for test spies, stubs and mocks
 
-### Rules
+### Testing rules
 The minimum limit for code coverage is set to 80% in all aspects:
 
 * Statements > 80% 
@@ -75,6 +75,7 @@ If code coverage is less than that you will not be able to commit or push on the
   * [Webpack Dev Server](https://github.com/webpack/webpack-dev-server) serves a webpack app. Updates the browser on changes.
   * [Webpack Dev Middleware](https://github.com/webpack/webpack-dev-middleware) is a simple wrapper middleware for webpack to be used in conjunction with Express or another server **Development only**
   * [Webpack Hot Middleware](https://github.com/glenjamin/webpack-hot-middleware) is webpack hot reloading that you can attach to your own server
+  * [webpack-module-hot-accept](https://github.com/loggur/webpack-module-hot-accept) Webpack plugin that adds module.hot.accept to the bottom of modules if module.hot is not already present.
 
 ### Webpack loaders
   
@@ -82,11 +83,12 @@ If code coverage is less than that you will not be able to commit or push on the
 * [dsv-loader](https://github.com/wbkd/dsv-loader) load dsv (e.g. .csv or .tsv) files.
 * [eslint-loader](https://github.com/MoOx/eslint-loader) is a loader for webpack
 * [file-loader](https://github.com/webpack-contrib/file-loader) can load any type of file
-* [html-loader](https://github.com/webpack-contrib/html-loader) exports HTML as string. HTML is minimized when the compiler demands.
+* [html-loader](https://github.com/webpack-contrib/html-loader) exports HTML as string. HTML is minimized when the compiler demands
 * [import-glob-loader](https://github.com/Aintaer/import-glob-loader) expands globbing patterns for SCSS import statements.
 * [imports-loader](https://github.com/webpack-contrib/imports-loader) allows you to use modules that depend on specific global variables, like jQuery for example
 * [postcss-loader](https://github.com/postcss/postcss-loader) PostCSS loader for webpack to postprocesses your CSS with PostCSS plugins
 * [React Hot Loader](https://github.com/gaearon/react-hot-loader) Hot reload specific for React
+  * [React Hot Loader Getting Started](http://gaearon.github.io/react-hot-loader/getstarted/)
 * [sass-loader](https://github.com/webpack-contrib/sass-loader) compiles Sass to CSS 
 * [Sass Resource Loader](https://github.com/shakacode/sass-resources-loader) is also used to share variables and mixins across all files without having to do @import every time
 * [style-loader](https://github.com/webpack-contrib/style-loader) adds CSS to the DOM by injecting a <style> tag
@@ -102,4 +104,4 @@ If code coverage is less than that you will not be able to commit or push on the
 
 ## Other tools
 
-
+[compression](https://github.com/expressjs/compression) compression middleware to gzip files on Express server

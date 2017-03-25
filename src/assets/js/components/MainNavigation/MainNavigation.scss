@@ -1,0 +1,9 @@
+.main-navigation {
+  .navigation-item {
+    margin-right: 10px;
+
+    &.active {
+      color: $ge-green;
+    }
+  }
+}

@@ -8,10 +8,20 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
 module.exports = {
   entry: {
     app: [
-      'webpack-hot-middleware/client',
-      './src/assets/js/main.jsx',
+      // activate HMR for React
+      'react-hot-loader/patch',
+
+      // bundle the client for webpack-dev-server
+      // and connect to the provided endpoint
+      'webpack-dev-server/client?http://localhost:3000',
+
+      // bundle the client for hot reloading
+      // only- means to only hot reload for successful updates
+      'webpack/hot/only-dev-server',
+      './src/assets/js/Main.jsx',
     ],
   },
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
@@ -30,6 +40,7 @@ module.exports = {
               plugins: ['babel-plugin-transform-runtime', 'react-hot-loader/babel'],
             },
           },
+          'webpack-module-hot-accept',
         ],
         exclude: /node_modules/,
       },
@@ -81,12 +92,7 @@ module.exports = {
               },
             },
           },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
+          'sass-loader',
           {
             loader: 'sass-resources-loader',
             options: {
@@ -125,7 +131,6 @@ module.exports = {
       syntax: 'scss',
     }),
     new HtmlWebpackPlugin({
-      output: './dist',
       filename: 'index.html',
       template: './src/index.html',
     }),
@@ -147,6 +152,10 @@ module.exports = {
   ],
   devServer: {
     hot: true,
+    inline: true,
+    contentBase: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
+    port: 3000,
     historyApiFallback: true,
   },
   output: {
