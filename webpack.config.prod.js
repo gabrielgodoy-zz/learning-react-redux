@@ -70,10 +70,6 @@ module.exports = {
         },
       },
       {
-        test: /\.json$/,
-        use: ['json-loader'],
-      },
-      {
         test: /\.(eot|otf|woff|woff2|ttf|svg)$/,
         use: ['url-loader?name=fonts/[name].[ext]'],
       },

@@ -15,6 +15,7 @@ app.use(express.static(`${__dirname}/public`));
 
 app.use(require('webpack-dev-middleware')(compiler, {
   publicPath: webpackConfig.output.publicPath,
+  historyApiFallback: true,
 }));
 app.use(require('webpack-hot-middleware')(compiler));
 

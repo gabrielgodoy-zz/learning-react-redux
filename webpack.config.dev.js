@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -33,13 +34,41 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[path][name]__[local]--[hash:base64:5]',
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins() {
+                return [autoprefixer({
+                  browsers: ['> 1%', 'last 2 versions'],
+                })];
+              },
+            },
+          },
+        ],
+      },
+      {
         test: /\.scss$/,
         use: [
           'style-loader',
           {
             loader: 'css-loader',
             options: {
-              root: './dist/images',
+              sourceMap: true,
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[path][name]__[local]--[hash:base64:5]',
             },
           },
           {
@@ -54,9 +83,19 @@ module.exports = {
           },
           {
             loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+            },
           },
           {
-            loader: 'import-glob-loader',
+            loader: 'sass-resources-loader',
+            options: {
+              resources: [
+                './src/assets/styles/settings/*.scss',
+                './src/assets/styles/tools/_mixins.scss',
+                './src/assets/styles/tools/_functions.scss',
+              ],
+            },
           },
         ],
       },
@@ -73,10 +112,6 @@ module.exports = {
         },
       },
       {
-        test: /\.json$/,
-        use: ['json-loader'],
-      },
-      {
         test: /\.(eot|otf|woff|woff2|ttf|svg)$/,
         use: ['url-loader?name=fonts/[name].[ext]'],
       },
@@ -86,6 +121,9 @@ module.exports = {
     extensions: ['.js', '.jsx'],
   },
   plugins: [
+    new StyleLintPlugin({
+      syntax: 'scss',
+    }),
     new HtmlWebpackPlugin({
       output: './dist',
       filename: 'index.html',
