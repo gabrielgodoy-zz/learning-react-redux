@@ -6,7 +6,9 @@ Experimentation project with nice tech put together
 
 ## Working with this structure
 
-`npm install` installs dependencies
+`npm install` or `yarn install` installs dependencies
+
+To install [yarn](https://yarnpkg.com/en/) on mac `brew install yarn`
 
 `npm start` starts project on port 3000
 
@@ -39,6 +41,7 @@ Experimentation project with nice tech put together
 * [React](https://github.com/facebook/react)
   * [React-router v4](https://github.com/ReactTraining/react-router)
   * [react-router-redux](https://github.com/reactjs/react-router-redux) add bindings to keep react-router and redux in sync 
+  * [react-helmet](https://github.com/nfl/react-helmet) A document head manager for React
 * [Redux](https://github.com/reactjs/redux/) is a state container for JavaScript apps 
 
 ---
@@ -73,9 +76,6 @@ If code coverage is less than that you will not be able to commit or push on the
 
 * [Webpack 2](https://webpack.js.org/) as a module bundler to split code using ES6 modules
   * [Webpack Dev Server](https://github.com/webpack/webpack-dev-server) serves a webpack app. Updates the browser on changes.
-  * [Webpack Dev Middleware](https://github.com/webpack/webpack-dev-middleware) is a simple wrapper middleware for webpack to be used in conjunction with Express or another server **Development only**
-  * [Webpack Hot Middleware](https://github.com/glenjamin/webpack-hot-middleware) is webpack hot reloading that you can attach to your own server
-  * [webpack-module-hot-accept](https://github.com/loggur/webpack-module-hot-accept) Webpack plugin that adds module.hot.accept to the bottom of modules if module.hot is not already present.
 
 ### Webpack loaders
   

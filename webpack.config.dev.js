@@ -10,7 +10,6 @@ module.exports = {
     app: [
       // activate HMR for React
       'react-hot-loader/patch',
-
       './src/assets/js/Main.jsx',
     ],
   },
@@ -32,7 +31,6 @@ module.exports = {
               plugins: ['babel-plugin-transform-runtime', 'react-hot-loader/babel'],
             },
           },
-          'webpack-module-hot-accept',
         ],
         exclude: /node_modules/,
       },
@@ -147,6 +145,7 @@ module.exports = {
   },
   output: {
     filename: 'bundle.js',
+    publicPath: '/',
     path: path.resolve(__dirname, './dist'),
   },
 };

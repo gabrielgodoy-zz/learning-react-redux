@@ -9,7 +9,7 @@ const MainNavigation = () => (
     <NavLink styleName="navigation-item" activeClassName={active} to="/about">About</NavLink>
     <NavLink
       styleName="navigation-item"
-      activeClassName={styles.active}
+      activeClassName={active}
       to="/topics"
     >
       Topics

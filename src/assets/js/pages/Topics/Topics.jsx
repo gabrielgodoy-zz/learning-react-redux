@@ -1,25 +1,19 @@
 import React, { PropTypes } from 'react';
+import { Helmet } from 'react-helmet';
 import {
   Route,
   Link,
 } from 'react-router-dom';
 
-const Topic = ({ match }) => (
-  <div>
-    <h3>{match.params.topicId}</h3>
-  </div>
-);
-
-Topic.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      topicId: PropTypes.string,
-    }),
-  }).isRequired,
-};
+import Topic from '../../components/Topic/Topic';
 
 const Topics = ({ match }) => (
   <div>
+    <Helmet>
+      <meta charSet="utf-8" />
+      <title>Topics</title>
+    </Helmet>
+
     <h2>Topics</h2>
     <ul>
       <li>
