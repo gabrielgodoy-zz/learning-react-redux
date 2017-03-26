@@ -39,10 +39,12 @@ To install [yarn](https://yarnpkg.com/en/) on mac `brew install yarn`
 ## Framework
 
 * [React](https://github.com/facebook/react)
-  * [React-router v4](https://github.com/ReactTraining/react-router)
-  * [react-router-redux](https://github.com/reactjs/react-router-redux) add bindings to keep react-router and redux in sync 
-  * [react-helmet](https://github.com/nfl/react-helmet) A document head manager for React
+  * [React Router v4](https://github.com/ReactTraining/react-router)
+  * [React Router Redux](https://github.com/reactjs/react-router-redux) add bindings to keep react-router and redux in sync 
+  * [React Helmet](https://github.com/nfl/react-helmet) is a document head manager for React
 * [Redux](https://github.com/reactjs/redux/) is a state container for JavaScript apps 
+  * [React Redux](https://github.com/reactjs/react-redux) React bindings for Redux
+  * [redux-immutable-state-invariant](https://github.com/leoasis/redux-immutable-state-invariant) Redux middleware that detects mutations between and outside redux dispatches. For development use only.
 
 ---
 

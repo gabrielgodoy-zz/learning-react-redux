@@ -3,7 +3,7 @@ import {
   Link,
 } from 'react-router-dom';
 import CSSModules from 'react-css-modules';
-import styles from './TopicLink.scss';
+import styles from './CourseLink.scss';
 
 const TopicList = ({ match, path, label }) => (
   <Link styleName="topic-list-item" to={`${match.url}/${path}`}>

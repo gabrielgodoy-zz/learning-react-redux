@@ -1,1 +1,20 @@
-{"corrida_atual": 27, "pilotos": [{"equipe": "Ferrari", "vitorias": 0, "nacionalidade": "Russo", "altura": "1.72m", "fotoRosto": "http://app.globoesporte.globo.com/motor/formula-1/tabela/2017/images/patrick-rosto.png", "index": 1, "fotoCorpo": "http://app.globoesporte.globo.com/motor/formula-1/tabela/2017/images/patrick-corpo.jpg", "aniversario": "2017-03-16 14:49:31+00:00", "idade": 21, "titulos": 20, "nome": "Patrick Oliveira", "fotoCapacete": "http://app.globoesporte.globo.com/motor/formula-1/tabela/2017/images/patrick-capacete.jpg", "totalVoltasMaisRapidas": 15, "pontos": 0, "poles": 5, "podios": 10, "posicaoPiloto": 1}, {"equipe": "Mc Laren", "vitorias": 0, "nacionalidade": "Brasileiro", "altura": "1.73m", "fotoRosto": "http://app.globoesporte.globo.com/motor/formula-1/tabela/2017/images/ricardo-rosto.png", "index": 2, "fotoCorpo": "http://app.globoesporte.globo.com/motor/formula-1/tabela/2017/images/ricardo-corpo.png", "aniversario": "2017-03-17 18:45:23+00:00", "idade": 20, "titulos": 100, "nome": "Ricardo Periago", "fotoCapacete": "http://app.globoesporte.globo.com/motor/formula-1/tabela/2017/images/ricardo-capacete.png", "totalVoltasMaisRapidas": 100, "pontos": 0, "poles": 100, "podios": 100, "posicaoPiloto": 2}], "equipes": {"1": {"titulosPilotos": 10, "sede": ", Brasil", "nomeCarro": "SXSW3030", "fotoLogo": "http://app.globoesporte.globo.com/motor/formula-1/tabela/2017/images/logo-mc-laren.png", "fotoCarro": "http://app.globoesporte.globo.com/motor/formula-1/tabela/2017/images/carro-mc-laren.png", "totalCorridas": 100, "titulosConstrutores": 100, "estreia": 2010, "posicaoEquipe": 1, "nome": "Mc Laren", "index": 1, "totalVoltasMaisRapidas": 20, "pontos": 0, "pilotos": [{"nome": "Ricardo Periago", "numero": 0}], "poles": 100, "podios": 110, "totalVitorias": 100}, "2": {"titulosPilotos": 100, "sede": ", Brasil", "nomeCarro": "SW342", "fotoLogo": "http://app.globoesporte.globo.com/motor/formula-1/tabela/2017/images/logo-ferrari.jpg", "fotoCarro": "http://app.globoesporte.globo.com/motor/formula-1/tabela/2017/images/carro-ferrari.jpg", "totalCorridas": 150, "titulosConstrutores": 100, "estreia": 2010, "posicaoEquipe": 2, "nome": "Ferrari", "index": 2, "totalVoltasMaisRapidas": 130, "pontos": 0, "pilotos": [{"nome": "Patrick Oliveira", "numero": 0}], "poles": 100, "podios": 100, "totalVitorias": 100}}, "corridas": {"27": {"etapaAtiva": 1, "voltas": "55", "circuito": "Interlagos", "cidade": "Brasil", "informacoes": {"provas": []}, "km": "20", "nome": "GP Brasil", "corrida": {"resultados": []}, "data": "2017-03-17", "grid": {"resultados": []}}, "28": {"etapaAtiva": 1, "voltas": "57", "circuito": "Interlagos", "cidade": "Brasil", "informacoes": {"provas": []}, "km": "", "nome": "Brasil", "corrida": {"resultados": []}, "data": "2017-03-20", "grid": {"resultados": []}}}}
+[
+  {
+    "id": 1,
+    "name": "Curso 1",
+    "description": "Descrição do curso",
+    "url": "http://www.google.com/"
+  },
+  {
+    "id": 2,
+    "name": "Curso 2",
+    "description": "Descrição do curso",
+    "url": "http://www.google.com/"
+  },
+  {
+    "id": 3,
+    "name": "Curso 3",
+    "description": "Descrição do curso",
+    "url": "http://www.google.com/"
+  }
+]

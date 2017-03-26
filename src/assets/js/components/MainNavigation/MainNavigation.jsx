@@ -12,7 +12,7 @@ const MainNavigation = () => (
       activeClassName={active}
       to="/topics"
     >
-      Topics
+      Courses
     </NavLink>
   </nav>
 );

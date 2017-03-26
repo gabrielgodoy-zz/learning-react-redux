@@ -10,7 +10,7 @@ import MainHeader from './components/MainHeader/MainHeader';
 import MainNavigation from './components/MainNavigation/MainNavigation';
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
-import Topics from './pages/Topics/Topics';
+import Courses from './pages/Courses/Courses';
 
 const AppContainer = () => (
   <BrowserRouter>
@@ -20,7 +20,7 @@ const AppContainer = () => (
         <MainNavigation />
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
-        <Route path="/topics" component={Topics} />
+        <Route path="/topics" component={Courses} />
       </div>
     </div>
   </BrowserRouter>
