@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import CSSModules from 'react-css-modules';
-import styles from './Topic.scss';
+import styles from './TopicHeader.scss';
 
 const Topic = ({ match }) => (
   <div styleName="topic">

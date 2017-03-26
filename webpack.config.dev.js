@@ -90,6 +90,7 @@ module.exports = {
                 './src/assets/styles/settings/*.scss',
                 './src/assets/styles/tools/_mixins.scss',
                 './src/assets/styles/tools/_functions.scss',
+                './node_modules/sass-mq/_mq.scss',
               ],
             },
           },

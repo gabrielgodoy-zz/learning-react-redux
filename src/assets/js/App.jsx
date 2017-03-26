@@ -3,6 +3,8 @@ import {
   BrowserRouter,
   Route,
 } from 'react-router-dom';
+import CSSModules from 'react-css-modules';
+import styles from './App.scss';
 
 import MainHeader from './components/MainHeader/MainHeader';
 import MainNavigation from './components/MainNavigation/MainNavigation';
@@ -14,12 +16,14 @@ const AppContainer = () => (
   <BrowserRouter>
     <div>
       <MainHeader title="This is the header" />
-      <MainNavigation />
-      <Route exact path="/" component={Home} />
-      <Route path="/about" component={About} />
-      <Route path="/topics" component={Topics} />
+      <div styleName="container">
+        <MainNavigation />
+        <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/topics" component={Topics} />
+      </div>
     </div>
   </BrowserRouter>
 );
 
-export default AppContainer;
+export default CSSModules(AppContainer, styles);

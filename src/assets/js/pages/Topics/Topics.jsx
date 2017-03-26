@@ -1,11 +1,9 @@
 import React, { PropTypes } from 'react';
 import { Helmet } from 'react-helmet';
-import {
-  Route,
-  Link,
-} from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
-import Topic from '../../components/Topic/Topic';
+import TopicLink from '../../components/TopicLink/TopicLink';
+import TopicHeader from '../../components/TopicHeader/TopicHeader';
 
 const Topics = ({ match }) => (
   <div>
@@ -15,25 +13,14 @@ const Topics = ({ match }) => (
     </Helmet>
 
     <h2>Topics</h2>
-    <ul>
-      <li>
-        <Link to={`${match.url}/rendering`}>
-          Rendering with React
-        </Link>
-      </li>
-      <li>
-        <Link to={`${match.url}/components`}>
-          Components
-        </Link>
-      </li>
-      <li>
-        <Link to={`${match.url}/props-v-state`}>
-          Props v. State
-        </Link>
-      </li>
-    </ul>
 
-    <Route path={`${match.url}/:topicId`} component={Topic} />
+    <div className="links">
+      <TopicLink match={match} path="topic-1" label="Topic 1" />
+      <TopicLink match={match} path="topic-2" label="Topic 2" />
+      <TopicLink match={match} path="topic-3" label="Topic 3" />
+    </div>
+
+    <Route path={`${match.url}/:topicId`} component={TopicHeader} />
     <Route
       path={match.url}
       exact
