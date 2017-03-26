@@ -24,9 +24,7 @@ const Topics = ({ match }) => (
     <Route
       path={match.url}
       exact
-      render={() => (
-        <h3>Please select a topic.</h3>
-      )}
+      render={() => <p>Please select a topic</p>}
     />
   </div>
 );

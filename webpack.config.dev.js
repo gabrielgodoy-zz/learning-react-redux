@@ -123,6 +123,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
+      favicon: path.resolve(__dirname, './src/favicon.ico'),
       template: './src/index.html',
     }),
 

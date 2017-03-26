@@ -9,9 +9,7 @@ const Home = () => (
     </Helmet>
 
     <h2>Home</h2>
-    <p>
-      Simple boilerplate to begin a react project
-    </p>
+    <p>Simple boilerplate to begin a react project</p>
   </div>
 );
 

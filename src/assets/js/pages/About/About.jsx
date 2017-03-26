@@ -9,6 +9,7 @@ const About = () => (
     </Helmet>
 
     <h2>About</h2>
+    <p>Another page</p>
   </div>
 );
 
