@@ -11,17 +11,9 @@ module.exports = {
       // activate HMR for React
       'react-hot-loader/patch',
 
-      // bundle the client for webpack-dev-server
-      // and connect to the provided endpoint
-      'webpack-dev-server/client?http://localhost:3000',
-
-      // bundle the client for hot reloading
-      // only- means to only hot reload for successful updates
-      'webpack/hot/only-dev-server',
       './src/assets/js/Main.jsx',
     ],
   },
-  devtool: 'inline-source-map',
   module: {
     rules: [
       {
@@ -141,8 +133,6 @@ module.exports = {
     // prints more readable module names in the browser console on HMR updates
     new webpack.NamedModulesPlugin(),
 
-    // do not emit compiled assets that include errors
-    new webpack.NoEmitOnErrorsPlugin(),
     new CopyWebpackPlugin([
       {
         from: './src/assets/data',
@@ -152,15 +142,11 @@ module.exports = {
   ],
   devServer: {
     hot: true,
-    inline: true,
-    contentBase: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
     port: 3000,
     historyApiFallback: true,
   },
   output: {
     filename: 'bundle.js',
-    publicPath: '/',
-    path: path.join(`${__dirname}dist`),
+    path: path.resolve(__dirname, './dist'),
   },
 };
