@@ -1,8 +1,9 @@
-export default function courseReducer(state = [], action) {
+export default function coursesReducer(state = [], action) {
   switch (action.type) {
     case 'CREATE_COURSE':
       // Return new instance of the state array,
-      // and then create a deep copy
+      // Create a deep copy of state without mutating the original state
+      // with spread operator and Object assign
       return [
         ...state,
         Object.assign({}, action.course),
