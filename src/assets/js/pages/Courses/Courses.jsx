@@ -1,11 +1,13 @@
 import React, { PropTypes } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { Route } from 'react-router-dom';
 import CSSModules from 'react-css-modules';
 import styles from './Courses.scss';
-import * as actions from './CoursesActions';
+import * as coursesActions from './CoursesActions';
 import CourseLink from '../../components/CourseLink/CourseLink';
+import CoursesList from '../../components/CoursesList/CoursesList';
 import CourseHeader from '../../components/CourseHeader/CourseHeader';
 
 class Courses extends React.Component {
@@ -35,7 +37,7 @@ class Courses extends React.Component {
   }
 
   onClickSave() {
-    this.props.dispatch(actions.createCourse(this.state.course)); // eslint-disable-line
+    this.props.actions.createCourse(this.state.course); // eslint-disable-line
   }
 
   courseRow(course, index) {  // eslint-disable-line
@@ -51,8 +53,7 @@ class Courses extends React.Component {
         </Helmet>
 
         <h2>Courses</h2>
-
-        {this.props.courses.map(this.courseRow)}
+        <CoursesList courses={this.props.courses} />
 
         <div styleName="create-course-container">
           <h3>Create a course</h3>
@@ -74,7 +75,11 @@ class Courses extends React.Component {
           <CourseLink match={this.props.match} path="topic-3" label="Course 3" />
         </div>
 
-        <Route path={`${this.props.match.url}/:topicId`} component={CourseHeader} />
+        <Route
+          path={`${this.props.match.url}/:topicId`}
+          component={CourseHeader}
+        />
+
         <Route
           path={this.props.match.url}
           exact
@@ -92,14 +97,26 @@ Courses.propTypes = {
   courses: PropTypes.arrayOf(React.PropTypes.shape({
     title: React.PropTypes.string.isRequired,
   })).isRequired,
+  actions: PropTypes.shape({
+    createCourses: PropTypes.func,
+  }).isRequired,
 };
 
-// States that will be available on this component via props
+// Define states that will be available on this component as props
 function mapStateToProps(state, ownProps) { // eslint-disable-line
   return {
     courses: state.courses,
   };
 }
 
-// When mapDispatchToProps is not defined, the component will have 'dispatch' property on its props
-export default connect(mapStateToProps)(CSSModules(Courses, styles));
+// bindActionCreators makes mapDispatchToProps more terse
+// bindActionCreators Maps all the action and wraps it in the dispatch
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(coursesActions, dispatch),
+  };
+}
+
+// Define actions that will be available on this component as props
+// When mapDispatchToProps is not defined, the component will have 'dispatch' property as a prop
+export default connect(mapStateToProps, mapDispatchToProps)(CSSModules(Courses, styles));

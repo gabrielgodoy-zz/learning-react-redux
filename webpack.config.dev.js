@@ -10,7 +10,7 @@ module.exports = {
     app: [
       // activate HMR for React
       'react-hot-loader/patch',
-      './src/assets/js/Main.jsx',
+      './src/assets/js/index.jsx',
     ],
   },
   module: {

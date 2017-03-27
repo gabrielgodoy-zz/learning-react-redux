@@ -5,7 +5,6 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.dev.js",
-    "preserver": "babel-node --presets=es2015 tools/startMessage.js",
     "server": "babel-node --presets=es2015 server.js",
     "build": "webpack --config webpack.config.prod.js",
     "lint": "npm-run-all lint:*",
@@ -81,6 +80,7 @@
     "react-router-redux": "next",
     "redux": "^3.6.0",
     "redux-immutable-state-invariant": "^2.0.0",
+    "redux-thunk": "^2.2.0",
     "sass-mq": "^3.3.2",
     "stylelint": "^7.9.0",
     "webpack": "^2.2.1",
