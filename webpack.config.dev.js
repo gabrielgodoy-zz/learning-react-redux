@@ -39,6 +39,7 @@ module.exports = {
             options: {
               presets: [['es2015', { modules: false }], 'stage-0', 'react'],
               plugins: ['babel-plugin-transform-runtime', 'react-hot-loader/babel'],
+              babelrc: false,
             },
           },
         ],
