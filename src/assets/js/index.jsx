@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+
 // AppContainer is a necessary wrapper component for HMR
 import { AppContainer } from 'react-hot-loader';
 
@@ -11,7 +12,7 @@ import '../styles/main.scss';
 import App from './App';
 
 const store = configureStore();
-store.dispatch(loadCourses());
+store.dispatch(loadCourses()); // Fetch initial list of courses
 
 const render = (Component) => {
   ReactDOM.render(
@@ -26,9 +27,6 @@ const render = (Component) => {
 };
 
 render(App);
-
 if (module.hot) {
-  module.hot.accept('./App', () => {
-    render(App);
-  });
+  module.hot.accept('./App', () => render(App));
 }

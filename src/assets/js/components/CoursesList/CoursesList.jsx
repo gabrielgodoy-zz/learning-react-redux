@@ -1,8 +1,11 @@
 import React, { PropTypes } from 'react';
 import CourseListRow from '../CoursesListRow/CoursesListRow';
 
-const CoursesList = ({ courses }) =>
-  courses.map(course => <CourseListRow key={course.id} course={course} />);
+const CoursesList = ({ courses }) => (
+  <div>
+    {courses.map(course => <CourseListRow key={course.id} course={course} />)}
+  </div>
+);
 
 CoursesList.propTypes = {
   courses: PropTypes.arrayOf(React.PropTypes.shape({
