@@ -12,8 +12,7 @@ export default function coursesReducer(state = [], action) {
       ];
 
     case types.LOAD_COURSES_SUCCESS:
-      // Simply returns objects from API
-      return action.courses;
+      return action.courses; // Simply returns objects from API
 
     default:
       return state;

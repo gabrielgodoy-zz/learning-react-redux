@@ -1,0 +1,31 @@
+.course-item {
+  margin: 10px 0;
+  text-decoration: none;
+  background: lightseagreen;
+  border-radius: 4px;
+  padding: 10px 20px;
+
+  .title {
+    color: $white;
+  }
+
+  .length,
+  .author,
+  .category {
+    color: lighten(lightseagreen, 40%);
+
+    @include fontSize(12px);
+
+    .value {
+      color: $white;
+      margin-left: 10px;
+    }
+  }
+
+  .link {
+    color: $white;
+    text-decoration: none;
+
+    @include fontSize(12px);
+  }
+}

@@ -1,0 +1,13 @@
+.topic-list-item {
+  display: inline-block;
+  margin-right: 50px;
+  margin-bottom: 10px;
+  background: darken($ge-green, 5%);
+  border-radius: 4px;
+  padding: 10px 20px;
+}
+
+.link {
+  text-decoration: none;
+  color: $white;
+}

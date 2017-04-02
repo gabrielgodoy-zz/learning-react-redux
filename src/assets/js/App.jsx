@@ -11,6 +11,7 @@ import MainNavigation from './components/MainNavigation/MainNavigation';
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import Courses from './pages/Courses/Courses';
+import Topics from './pages/Topics/Topics';
 
 const AppContainer = () => (
   <BrowserRouter>
@@ -20,7 +21,8 @@ const AppContainer = () => (
         <MainNavigation />
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
-        <Route path="/topics" component={Courses} />
+        <Route path="/courses" component={Courses} />
+        <Route path="/topics" component={Topics} />
       </div>
     </div>
   </BrowserRouter>

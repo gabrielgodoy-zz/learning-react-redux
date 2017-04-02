@@ -7,13 +7,8 @@ const MainNavigation = () => (
   <nav styleName="main-navigation">
     <NavLink styleName="navigation-item" activeClassName={active} exact to="/">Home</NavLink>
     <NavLink styleName="navigation-item" activeClassName={active} to="/about">About</NavLink>
-    <NavLink
-      styleName="navigation-item"
-      activeClassName={active}
-      to="/topics"
-    >
-      Courses
-    </NavLink>
+    <NavLink styleName="navigation-item" activeClassName={active} to="/courses">Courses </NavLink>
+    <NavLink styleName="navigation-item" activeClassName={active} to="/topics">Topics</NavLink>
   </nav>
 );
 

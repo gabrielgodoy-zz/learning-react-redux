@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
-import CourseListRow from '../CoursesListRow/CoursesListRow';
+import CourseListItem from '../CourseListItem/CourseListItem';
 
 const CoursesList = ({ courses }) => (
   <div>
-    {courses.map(course => <CourseListRow key={course.id} course={course} />)}
+    {courses.map(course => <CourseListItem key={course.id} course={course} />)}
   </div>
 );
 

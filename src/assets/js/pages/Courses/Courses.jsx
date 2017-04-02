@@ -2,13 +2,9 @@ import React, { PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { Route } from 'react-router-dom';
-import CSSModules from 'react-css-modules';
-import styles from './Courses.scss';
 import * as coursesActions from './CoursesActions';
-import CourseLink from '../../components/CourseLink/CourseLink';
-import CoursesList from '../../components/CoursesList/CoursesList';
-import CourseHeader from '../../components/CourseHeader/CourseHeader';
+import CourseList from '../../components/CourseList/CourseList';
+import CourseCreator from '../../components/CourseCreator/CourseCreator';
 
 class Courses extends React.Component {
   constructor(props) {
@@ -16,6 +12,7 @@ class Courses extends React.Component {
     this.state = {
       course: {
         title: '',
+        id: '0',
       },
     };
 
@@ -23,7 +20,6 @@ class Courses extends React.Component {
     // Binding correct 'this' context
     this.onTitleChange = this.onTitleChange.bind(this);
     this.onClickSave = this.onClickSave.bind(this);
-
     // The bind to the correct 'this' could have been done inside the render function, like that:
     // <input onChange={this.onTitleChange.bind(this)} />
     // but it has performance issues because by doing that you are recreting that function
@@ -40,11 +36,8 @@ class Courses extends React.Component {
     this.props.actions.createCourse(this.state.course); // eslint-disable-line
   }
 
-  courseRow(course, index) {  // eslint-disable-line
-    return <div key={index}>{course.title}</div>;
-  }
-
   render() {
+    const { courses } = this.props;
     return (
       <div>
         <Helmet>
@@ -53,47 +46,21 @@ class Courses extends React.Component {
         </Helmet>
 
         <h2>Courses</h2>
-        <CoursesList courses={this.props.courses} />
 
-        <div styleName="create-course-container">
-          <h3>Create a course</h3>
-          <input
-            type="text"
-            onChange={this.onTitleChange}
-            value={this.state.course.title}
-          />
-          <input
-            type="submit"
-            onClick={this.onClickSave}
-            value="Save"
-          />
-        </div>
-
-        <div className="links">
-          <CourseLink match={this.props.match} path="topic-1" label="Course 1" />
-          <CourseLink match={this.props.match} path="topic-2" label="Course 2" />
-          <CourseLink match={this.props.match} path="topic-3" label="Course 3" />
-        </div>
-
-        <Route
-          path={`${this.props.match.url}/:topicId`}
-          component={CourseHeader}
+        <CourseCreator
+          onTitleChange={this.onTitleChange}
+          onClickSave={this.onClickSave}
+          stateValue={this.state.course.title}
         />
 
-        <Route
-          path={this.props.match.url}
-          exact
-          render={() => <p>Please select a topic</p>}
-        />
+        <CourseList courses={courses} />
+
       </div>
     );
   }
 }
 
 Courses.propTypes = {
-  match: PropTypes.shape({
-    url: PropTypes.string.isRequired,
-  }).isRequired,
   courses: PropTypes.arrayOf(React.PropTypes.shape({
     title: React.PropTypes.string.isRequired,
   })).isRequired,
@@ -119,4 +86,4 @@ function mapDispatchToProps(dispatch) {
 
 // Define actions that will be available on this component as props
 // When mapDispatchToProps is not defined, the component will have 'dispatch' property as a prop
-export default connect(mapStateToProps, mapDispatchToProps)(CSSModules(Courses, styles));
+export default connect(mapStateToProps, mapDispatchToProps)(Courses);
