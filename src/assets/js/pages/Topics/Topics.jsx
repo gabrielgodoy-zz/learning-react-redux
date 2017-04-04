@@ -11,16 +11,8 @@ const Topics = ({ match }) => (
       <TopicLink match={match} path="topic-3" label="Topic 3" />
     </div>
 
-    <Route
-      path={`${match.url}/:topicId`}
-      component={TopicHeader}
-    />
-
-    <Route
-      path={match.url}
-      exact
-      render={() => <p>Please select a topic</p>}
-    />
+    <Route path={`${match.url}/:topicId`} component={TopicHeader} />
+    <Route path={match.url} exact render={() => <p>Please select a topic</p>} />
   </div>
 );
 

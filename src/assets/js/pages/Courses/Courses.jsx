@@ -3,8 +3,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import * as coursesActions from './CoursesActions';
-import CourseList from '../../components/CourseList/CourseList';
 import CourseCreator from '../../components/CourseCreator/CourseCreator';
+import CourseList from '../../components/CourseList/CourseList';
 
 class Courses extends React.Component {
   constructor(props) {
@@ -54,7 +54,6 @@ class Courses extends React.Component {
         />
 
         <CourseList courses={courses} />
-
       </div>
     );
   }

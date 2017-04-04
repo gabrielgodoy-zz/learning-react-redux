@@ -22,7 +22,7 @@ const authors = [
 ];
 
 // This would be performed on the server in a real app. Just stubbing in.
-const generateId = (author) => `${author.firstName.toLowerCase()}-${author.lastName.toLowerCase()}`;
+const generateId = author => `${author.firstName.toLowerCase()}-${author.lastName.toLowerCase()}`;
 
 class AuthorApi {
   static getAllAuthors() {
@@ -53,7 +53,7 @@ class AuthorApi {
           // Just simulating creation here.
           // The server would generate ids for new authors in a real app.
           // Cloning so copy returned is passed by value rather than by reference.
-          author.id = generateId(author);
+          author.id = generateId(author); // eslint-disable-line
           authors.push(author);
         }
 

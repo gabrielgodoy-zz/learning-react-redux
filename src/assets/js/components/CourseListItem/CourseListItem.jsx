@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router-dom';
 import CSSModules from 'react-css-modules';
 import styles from './CourseListItem.scss';
 
 const CourseListItem = ({ course }) => (
   <div styleName="course-item">
-    <h4 styleName="title">{course.title}</h4>
+    <Link to={`/course/${course.id}`} styleName="title">{course.title}</Link>
     <p styleName="length">
       Length:
       <span styleName="value">

@@ -1,0 +1,23 @@
+.form-group {
+  padding: 0;
+
+  &.has-error {
+    border: 2px solid red;
+  }
+}
+
+.field {
+  padding: 0;
+}
+
+.form-control {
+  padding: 0;
+}
+
+.alert {
+  color: red;
+}
+
+.alert-danger {
+  color: red;
+}

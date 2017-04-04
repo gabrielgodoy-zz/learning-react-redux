@@ -7,12 +7,14 @@ import { AppContainer } from 'react-hot-loader';
 
 import configureStore from './store';
 import { loadCourses } from './pages/Courses/CoursesActions';
+import { loadAuthors } from './pages/ManageCourses/ManageCoursesActions';
 
 import '../styles/main.scss';
 import App from './App';
 
 const store = configureStore();
 store.dispatch(loadCourses()); // Fetch initial list of courses
+store.dispatch(loadAuthors()); // Fetch initial list of authors
 
 const render = (Component) => {
   ReactDOM.render(
