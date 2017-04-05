@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as actions from '../Courses/CoursesActions';
@@ -29,8 +29,7 @@ class ManageCourses extends React.Component {  // eslint-disable-line
 
   saveCourse(event) {
     event.preventDefault();
-    this.props.actions.saveCourse(this.state.course);
-    this.context.router.push('/courses');
+    this.props.history.push('/courses');
   }
 
   render() {
@@ -70,6 +69,9 @@ ManageCourses.propTypes = {
   match: PropTypes.shape({
     url: PropTypes.string.isRequired,
   }).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
   course: PropTypes.shape({
     title: PropTypes.string.isRequired,
     authorId: PropTypes.string.isRequired,
@@ -77,9 +79,6 @@ ManageCourses.propTypes = {
     length: PropTypes.string.isRequired,
   }).isRequired,
   authors: PropTypes.arrayOf(PropTypes.object).isRequired,
-  actions: PropTypes.shape({
-    saveCourse: PropTypes.func.isRequired,
-  }).isRequired,
 };
 
 // Pull in the React Router context so router is available on this.contet.router
@@ -87,16 +86,32 @@ ManageCourses.contextTypes = {
   router: PropTypes.object.isRequired,
 };
 
+function getCourseById(courses, id) {
+  const course = courses.filter(courseItem => courseItem.id === id);
+  if (course) {
+    return course[0];
+  }
+  return null;
+}
+
 // Define what state will be available on this component via props
 // Represent states from the store
-function mapStateToProps(state, ownProps) { // eslint-disable-line
-  const course = {
+function mapStateToProps(state, ownProps) {
+  // TODO: Fix router
+  const courseId = ownProps.match.params.id; // From the path /course/:id
+
+  let course = { // Empty course
+    id: '',
     title: '',
     watchRef: '',
     authorId: '',
     length: '',
     category: '',
   };
+
+  if (courseId) {
+    course = getCourseById(state.courses, courseId);
+  }
 
   const authorsFormattedForDropdown = state.authors.map(author => ({
     value: author.id,
@@ -115,4 +130,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ManageCourses);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ManageCourses));
