@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
+import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import * as coursesActions from './CoursesActions';
-import CourseCreator from '../../components/CourseCreator/CourseCreator';
 import CourseList from '../../components/CourseList/CourseList';
 
 class Courses extends React.Component {
@@ -20,6 +20,7 @@ class Courses extends React.Component {
     // Binding correct 'this' context
     this.onTitleChange = this.onTitleChange.bind(this);
     this.onClickSave = this.onClickSave.bind(this);
+    this.redirectToAddCoursePage = this.redirectToAddCoursePage.bind(this);
     // The bind to the correct 'this' could have been done inside the render function, like that:
     // <input onChange={this.onTitleChange.bind(this)} />
     // but it has performance issues because by doing that you are recreting that function
@@ -36,6 +37,10 @@ class Courses extends React.Component {
     this.props.actions.createCourse(this.state.course); // eslint-disable-line
   }
 
+  redirectToAddCoursePage() {
+    this.props.history.push('/course');
+  }
+
   render() {
     const { courses } = this.props;
     return (
@@ -46,13 +51,12 @@ class Courses extends React.Component {
         </Helmet>
 
         <h2>Courses</h2>
-
-        <CourseCreator
-          onTitleChange={this.onTitleChange}
-          onClickSave={this.onClickSave}
-          stateValue={this.state.course.title}
+        <input
+          type="submit"
+          value="Add course"
+          className="btn btn-primary"
+          onClick={this.redirectToAddCoursePage}
         />
-
         <CourseList courses={courses} />
       </div>
     );
@@ -65,6 +69,9 @@ Courses.propTypes = {
   })).isRequired,
   actions: PropTypes.shape({
     createCourses: PropTypes.func,
+  }).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
   }).isRequired,
 };
 
@@ -85,4 +92,4 @@ function mapDispatchToProps(dispatch) {
 
 // Define actions that will be available on this component as props
 // When mapDispatchToProps is not defined, the component will have 'dispatch' property as a prop
-export default connect(mapStateToProps, mapDispatchToProps)(Courses);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Courses));

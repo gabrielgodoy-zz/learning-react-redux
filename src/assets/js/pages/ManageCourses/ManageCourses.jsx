@@ -14,6 +14,23 @@ class ManageCourses extends React.Component {  // eslint-disable-line
       authors: [],
       errors: {},
     };
+
+    // Bind correct this context
+    this.saveCourse = this.saveCourse.bind(this);
+    this.updateCourseState = this.updateCourseState.bind(this);
+  }
+
+  updateCourseState(event) {
+    const field = event.target.name; // Each form field has a name
+    const course = this.state.course;
+    course[field] = event.target.value;
+    return this.setState({ course });
+  }
+
+  saveCourse(event) {
+    event.preventDefault();
+    this.props.actions.saveCourse(this.state.course);
+    this.context.router.push('/courses');
   }
 
   render() {
@@ -27,8 +44,8 @@ class ManageCourses extends React.Component {  // eslint-disable-line
                 course={this.state.course}
                 errors={this.state.errors}
                 allAuthors={this.props.authors}
-                onSave=""
-                onChange=""
+                onSave={this.saveCourse}
+                onChange={this.updateCourseState}
                 saving=""
               />
             )}
@@ -60,9 +77,18 @@ ManageCourses.propTypes = {
     length: PropTypes.string.isRequired,
   }).isRequired,
   authors: PropTypes.arrayOf(PropTypes.object).isRequired,
+  actions: PropTypes.shape({
+    saveCourse: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
-// List of properties that are bound to this component, that represents states from the store
+// Pull in the React Router context so router is available on this.contet.router
+ManageCourses.contextTypes = {
+  router: PropTypes.object.isRequired,
+};
+
+// Define what state will be available on this component via props
+// Represent states from the store
 function mapStateToProps(state, ownProps) { // eslint-disable-line
   const course = {
     title: '',
@@ -72,12 +98,10 @@ function mapStateToProps(state, ownProps) { // eslint-disable-line
     category: '',
   };
 
-  const authorsFormattedForDropdown = state.authors.map(author => (
-    {
-      value: author.id,
-      text: `${author.firstName} ${author.lastName}`,
-    }
-  ));
+  const authorsFormattedForDropdown = state.authors.map(author => ({
+    value: author.id,
+    text: `${author.firstName} ${author.lastName}`,
+  }));
 
   return {
     course,

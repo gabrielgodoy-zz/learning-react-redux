@@ -1,8 +1,6 @@
-// Centralized file to declare the initial state for all reducers to read
-// All reducers are handling a piece of the store declared here
-
-// This is a picture of how the store initializes
-// This file can help to imagine how the store looks like
+// A picture of how the Store initializes
+// A centralized file to declare the initial state for all reducers to read
+// Each reducer handles a piece of the store declared here
 
 export default {
   authors: [],

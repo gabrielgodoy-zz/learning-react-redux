@@ -1,2 +1,3 @@
-export const CREATE_COURSE = 'CREATE_COURSE'; // eslint-disable-line
-export const LOAD_COURSES_SUCCESS = 'LOAD_COURSES_SUCCESS'; // eslint-disable-line
+export const LOAD_COURSES_SUCCESS = 'LOAD_COURSES_SUCCESS';
+export const CREATE_COURSES_SUCCESS = 'CREATE_COURSES_SUCCESS';
+export const UPDATE_COURSES_SUCCESS = 'UPDATE_COURSES_SUCCESS';
