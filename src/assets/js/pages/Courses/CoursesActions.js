@@ -1,5 +1,6 @@
 import * as types from './CoursesConstants';
 import CourseApi from '../../../../api/mockCourseApi';
+import { beginAjaxCall, ajaxCallError } from '../../App/AppActions';
 
 export function loadCoursesSuccess(courses) {
   return {
@@ -23,7 +24,8 @@ export function updateCourseSuccess(course) {
 }
 
 export function loadCourses() {
-  return function(dispatch) { // eslint-disable-line
+  return function (dispatch) { // eslint-disable-line
+    dispatch(beginAjaxCall());
     return CourseApi.getAllCourses().then((courses) => {
       dispatch(loadCoursesSuccess(courses));
     }).catch((error) => {
@@ -35,10 +37,14 @@ export function loadCourses() {
 // Save or update a course
 export function saveCourse(course) {
   // getState can get pieces of state from store to use inside the thunk
-  return function(dispatch, getState) {  // eslint-disable-line
+  return function (dispatch) {  // eslint-disable-line
+    dispatch(beginAjaxCall());
     return CourseApi.saveCourse(course).then(savedCourse => // eslint-disable-line
-      savedCourse.id ? dispatch(updateCourseSuccess(savedCourse)) : dispatch(createCourseSuccess(savedCourse)) // eslint-disable-line
+      savedCourse.id
+        ? dispatch(updateCourseSuccess(savedCourse))
+        : dispatch(createCourseSuccess(savedCourse)),
     ).catch((error) => {
+      dispatch(ajaxCallError(error));
       throw (error);
     });
   };

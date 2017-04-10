@@ -9,8 +9,10 @@ import configureStore from './store';
 import { loadCourses } from './pages/Courses/CoursesActions';
 import { loadAuthors } from './pages/ManageCourses/ManageCoursesActions';
 
+import '../../../node_modules/toastr/build/toastr.css';
 import '../styles/main.scss';
-import App from './App';
+import '../styles/teste.css';
+import App from './App/App';
 
 const store = configureStore();
 store.dispatch(loadCourses()); // Fetch initial list of courses
@@ -30,5 +32,5 @@ const render = (Component) => {
 
 render(App);
 if (module.hot) {
-  module.hot.accept('./App', () => render(App));
+  module.hot.accept('./App/App', () => render(App));
 }

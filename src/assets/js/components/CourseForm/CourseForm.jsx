@@ -60,10 +60,10 @@ CourseForm.propTypes = {
   onChange: PropTypes.func.isRequired,
   saving: PropTypes.bool.isRequired,
   errors: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    authorId: PropTypes.string.isRequired,
-    category: PropTypes.string.isRequired,
-    length: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    authorId: PropTypes.string,
+    category: PropTypes.string,
+    length: PropTypes.string,
   }).isRequired,
 };
 

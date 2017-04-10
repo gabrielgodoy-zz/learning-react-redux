@@ -76,7 +76,7 @@ Courses.propTypes = {
 };
 
 // Define states that will be available on this component as props
-function mapStateToProps(state, ownProps) { // eslint-disable-line
+function mapStateToProps(state) { // eslint-disable-line
   return {
     courses: state.courses,
   };

@@ -1,23 +1,34 @@
 import React, { PropTypes } from 'react';
-import { Route, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import toastr from 'toastr';
 import * as actions from '../Courses/CoursesActions';
 import CourseForm from '../../components/CourseForm/CourseForm';
 
-class ManageCourses extends React.Component {  // eslint-disable-line
-  constructor(props, context) {  // eslint-disable-line
+class ManageCourses extends React.Component {
+  constructor(props, context) {
     super(props, context);
 
     this.state = {
       course: Object.assign({}, this.props.course),
       authors: [],
       errors: {},
+      saving: false,
     };
 
-    // Bind correct this context
+    // Bind correct 'this' context
     this.saveCourse = this.saveCourse.bind(this);
     this.updateCourseState = this.updateCourseState.bind(this);
+  }
+
+  // Update state when props change, in  this case, when courses comes from ajax call
+  componentWillReceiveProps(nextProps) {
+    const courseIdChanged = this.props.course.id !== nextProps.course.id;
+    if (courseIdChanged) {
+      // Populate form when existing course is loaded directly
+      this.setState({ course: Object.assign({}, nextProps.course) });
+    }
   }
 
   updateCourseState(event) {
@@ -27,63 +38,61 @@ class ManageCourses extends React.Component {  // eslint-disable-line
     return this.setState({ course });
   }
 
+  redirect() {
+    toastr.success('Course saved!');
+    this.setState({ saving: true });
+    this.props.history.push('/courses');
+  }
+
   saveCourse(event) {
     event.preventDefault();
-    this.props.history.push('/courses');
+
+    // Use local state outside of redux, in the case when data
+    // that the rest of the app will not care about, like a "saving" feedback to the user
+    this.setState({ saving: true });
+
+    // Here I am capable of using saveCourse because of mapDispatchToProps
+    this.props.actions.saveCourse(this.state.course) // Thunk returns promises
+        .then(() => this.redirect())
+        .catch((error) => {
+          toastr.error(error);
+          this.setState({ saving: false });
+        });
   }
 
   render() {
     return (
       <div>
-        <Route
-          path={`${this.props.match.url}/:id`}
-          render={
-            () => (
-              <CourseForm
-                course={this.state.course}
-                errors={this.state.errors}
-                allAuthors={this.props.authors}
-                onSave={this.saveCourse}
-                onChange={this.updateCourseState}
-                saving=""
-              />
-            )}
-        />
-        <Route
-          path={this.props.match.url}
-          exact
-          render={
-            () => (
-              <div className="manage-course-container">
-                <h1>Manage Courses</h1>
-              </div>
-            )
-          }
-        />
+        <div className="manage-course-container">
+          <CourseForm
+            course={this.state.course}
+            errors={this.state.errors}
+            allAuthors={this.props.authors}
+            onSave={this.saveCourse}
+            onChange={this.updateCourseState}
+            saving={this.state.saving}
+          />
+        </div>
       </div>
     );
   }
 }
 
 ManageCourses.propTypes = {
-  match: PropTypes.shape({
-    url: PropTypes.string.isRequired,
+  actions: PropTypes.shape({
+    saveCourse: PropTypes.func.isRequired,
   }).isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
   course: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     authorId: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
     length: PropTypes.string.isRequired,
   }).isRequired,
   authors: PropTypes.arrayOf(PropTypes.object).isRequired,
-};
-
-// Pull in the React Router context so router is available on this.contet.router
-ManageCourses.contextTypes = {
-  router: PropTypes.object.isRequired,
 };
 
 function getCourseById(courses, id) {
@@ -97,7 +106,6 @@ function getCourseById(courses, id) {
 // Define what state will be available on this component via props
 // Represent states from the store
 function mapStateToProps(state, ownProps) {
-  // TODO: Fix router
   const courseId = ownProps.match.params.id; // From the path /course/:id
 
   let course = { // Empty course
@@ -109,7 +117,10 @@ function mapStateToProps(state, ownProps) {
     category: '',
   };
 
-  if (courseId) {
+  // Don't try to get new courses when no courses are available yet, wait for Ajax call to finish
+  const courseExist = state.courses.length;
+
+  if (courseId && courseExist) {
     course = getCourseById(state.courses, courseId);
   }
 

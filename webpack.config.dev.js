@@ -38,7 +38,11 @@ module.exports = {
             loader: 'babel-loader',
             options: {
               presets: [['es2015', { modules: false }], 'stage-0', 'react'],
-              plugins: ['babel-plugin-transform-runtime', 'react-hot-loader/babel'],
+              plugins: [
+                'transform-object-rest-spread',
+                'babel-plugin-transform-runtime',
+                'react-hot-loader/babel',
+              ],
               babelrc: false,
             },
           },
@@ -49,25 +53,7 @@ module.exports = {
         test: /\.css$/,
         use: [
           'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-              modules: true,
-              importLoaders: 1,
-              localIdentName: '[path][name]__[local]--[hash:base64:5]',
-            },
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins() {
-                return [autoprefixer({
-                  browsers: ['> 1%', 'last 2 versions'],
-                })];
-              },
-            },
-          },
+          'css-loader',
         ],
       },
       {
