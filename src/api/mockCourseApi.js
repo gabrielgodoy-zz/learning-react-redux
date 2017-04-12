@@ -69,7 +69,7 @@ class CourseApi {
         // Reject if title is minimum of 1
         const minCourseTitleLength = 1;
         if (course.title.length < minCourseTitleLength) {
-          reject(`Title must be at least ${minCourseTitleLength} characters.`);
+          reject(`Title must be at least ${minCourseTitleLength} characters`);
         }
 
         if (course.id) {

@@ -36,10 +36,10 @@ export function loadCourses() {
 
 // Save or update a course
 export function saveCourse(course) {
-  // getState can get pieces of state from store to use inside the thunk
   return function (dispatch) {  // eslint-disable-line
     dispatch(beginAjaxCall());
     return CourseApi.saveCourse(course).then(savedCourse => // eslint-disable-line
+      // If has ID you are updating a course
       savedCourse.id
         ? dispatch(updateCourseSuccess(savedCourse))
         : dispatch(createCourseSuccess(savedCourse)),
