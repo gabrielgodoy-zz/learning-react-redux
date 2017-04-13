@@ -20,5 +20,6 @@
     <orderEntry type="library" name="sinon-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="react-helmet-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="toastr-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="expect-DefinitelyTyped" level="application" />
   </component>
 </module>

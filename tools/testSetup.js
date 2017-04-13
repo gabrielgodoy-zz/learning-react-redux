@@ -28,6 +28,9 @@ require('babel-register')();
 require.extensions['.css'] = function() {
   return null;
 };
+require.extensions['.scss'] = function() {
+  return null;
+};
 require.extensions['.png'] = function() {
   return null;
 };
@@ -38,7 +41,6 @@ require.extensions['.jpg'] = function() {
 // Configure JSDOM and set global variables
 // to simulate a browser environment for tests.
 var jsdom = require('jsdom').jsdom;
-
 var exposedProperties = ['window', 'navigator', 'document'];
 
 global.document = jsdom('');

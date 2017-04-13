@@ -14,7 +14,7 @@
     "remove-dist": "rimraf dist",
     "precommit": "npm run lint",
     "prepush": "npm-run-all --parallel lint test",
-    "test": "mocha --reporter spec ./tools/testSetup.js \"src/**/*.test.jsx\"",
+    "test": "mocha --reporter spec ./tools/testSetup.js \"./src/**/*.test.jsx\"",
     "test:watch": "npm run test -- --watch"
   },
   "eslintConfig": {
