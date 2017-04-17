@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
-import CSSModules from 'react-css-modules';
-import styles from '../Form.scss';
+import '../Form.scss';
 
 const TextInput = ({ name, label, onChange, placeholder, value, error }) => {
   let wrapperClass = 'form-group';
@@ -41,4 +40,4 @@ TextInput.propTypes = {
   error: PropTypes.string,
 };
 
-export default CSSModules(TextInput, styles);
+export default TextInput;

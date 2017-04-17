@@ -1,11 +1,10 @@
 import React, { PropTypes } from 'react';
-import CSSModules from 'react-css-modules';
-import styles from '../Form.scss';
+import '../Form.scss';
 
 const SelectInput = ({ name, label, onChange, defaultOption, value, error, options }) => (
   <div styleName="form-group">
     <label htmlFor={name}>{label}</label>
-    <div className="field">
+    <div styleName="field">
       {
         /* Note, value is set here rather than on the option -
          docs: https://facebook.github.io/react/docs/forms.html */
@@ -43,4 +42,4 @@ SelectInput.propTypes = {
   options: PropTypes.arrayOf(PropTypes.object),
 };
 
-export default CSSModules(SelectInput, styles);
+export default SelectInput;

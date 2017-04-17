@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
-import CSSModules from 'react-css-modules';
-import styles from './Header.scss';
+import './Header.scss';
 
 const Topic = ({ match }) => (
   <div styleName="topic">
@@ -16,4 +15,4 @@ Topic.propTypes = {
   }).isRequired,
 };
 
-export default CSSModules(Topic, styles);
+export default Topic;

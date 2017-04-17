@@ -5,6 +5,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
+const context = path.resolve(__dirname, 'src');
+
 module.exports = {
   devtool: 'eval',
   entry: {
@@ -42,6 +44,14 @@ module.exports = {
                 'transform-object-rest-spread',
                 'babel-plugin-transform-runtime',
                 'react-hot-loader/babel',
+                [
+                  'react-css-modules',
+                  {
+                    filetypes: {
+                      '.scss': 'postcss-scss',
+                    },
+                  },
+                ],
               ],
               babelrc: false,
             },
@@ -53,7 +63,14 @@ module.exports = {
         test: /\.css$/,
         use: [
           'style-loader',
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              importLoaders: 1,
+              localIdentName: '[path]___[name]__[local]___[hash:base64:5]',
+            },
+          },
         ],
       },
       {
@@ -66,7 +83,7 @@ module.exports = {
               sourceMap: true,
               modules: true,
               importLoaders: 1,
-              localIdentName: '[path][name]__[local]--[hash:base64:5]',
+              localIdentName: '[path]___[name]__[local]___[hash:base64:5]',
             },
           },
           {

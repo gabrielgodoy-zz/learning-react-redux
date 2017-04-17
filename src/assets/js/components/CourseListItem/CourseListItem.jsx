@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router-dom';
-import CSSModules from 'react-css-modules';
-import styles from './CourseListItem.scss';
+import './CourseListItem.scss';
 
 const CourseListItem = ({ course }) => (
   <div styleName="course-item">
@@ -34,4 +33,4 @@ CourseListItem.propTypes = {
   }).isRequired,
 };
 
-export default CSSModules(CourseListItem, styles);
+export default CourseListItem;

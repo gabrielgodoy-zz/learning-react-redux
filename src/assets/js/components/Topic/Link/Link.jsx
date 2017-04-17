@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router-dom';
-import CSSModules from 'react-css-modules';
-import styles from './Link.scss';
+import './Link.scss';
 
 const TopicLink = ({ match, path, label }) => (
   <Link styleName="link" to={`${match.url}/${path}`}>
@@ -17,4 +16,4 @@ TopicLink.propTypes = {
   label: PropTypes.string.isRequired,
 };
 
-export default CSSModules(TopicLink, styles);
+export default TopicLink;

@@ -1,8 +1,7 @@
 import React, { PropTypes } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import CSSModules from 'react-css-modules';
-import styles from './App.scss';
+import './App.scss';
 
 import MainHeader from '../components/MainHeader/MainHeader';
 import MainNavigation from '../components/MainNavigation/MainNavigation';
@@ -10,7 +9,7 @@ import Home from '../pages/Home/Home';
 import About from '../pages/About/About';
 import Topics from '../pages/Topics/Topics';
 import Courses from '../pages/Courses/Courses';
-import ManageCourses from '../pages/ManageCourses/ManageCourses';
+import ManageCoursesPage from '../pages/ManageCourses/ManageCourses';
 
 const AppContainer = ({ loading }) => (
   <BrowserRouter>
@@ -22,8 +21,8 @@ const AppContainer = ({ loading }) => (
         <Route path="/about" component={About} />
         <Route path="/topics" component={Topics} />
         <Route path="/courses" component={Courses} />
-        <Route exact path="/course" component={ManageCourses} />
-        <Route path="/course/:id" component={ManageCourses} />
+        <Route exact path="/course" component={ManageCoursesPage} />
+        <Route path="/course/:id" component={ManageCoursesPage} />
       </div>
     </div>
   </BrowserRouter>
@@ -39,4 +38,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(CSSModules(AppContainer, styles));
+export default connect(mapStateToProps)(AppContainer);

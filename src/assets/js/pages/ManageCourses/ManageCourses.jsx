@@ -6,7 +6,7 @@ import toastr from 'toastr';
 import * as actions from '../Courses/CoursesActions';
 import CourseForm from '../../components/CourseForm/CourseForm';
 
-class ManageCourses extends React.Component {
+export class ManageCourses extends React.Component {
   constructor(props, context) {
     super(props, context);
 
@@ -44,8 +44,26 @@ class ManageCourses extends React.Component {
     this.props.history.push('/courses');
   }
 
+  courseFormIsValid() {
+    let formIsValid = true;
+    const errors = {};
+    const titleIsLessThanMinimumLength = this.state.course.title.length < 5;
+
+    if (titleIsLessThanMinimumLength) {
+      errors.title = 'Title must be at least 5 characters.';
+      formIsValid = false;
+    }
+
+    this.setState({ errors });
+    return formIsValid;
+  }
+
   saveCourse(event) {
     event.preventDefault();
+
+    if (!this.courseFormIsValid()) {
+      return;
+    }
 
     // Use local state outside of redux, in the case when data
     // that the rest of the app will not care about, like a "saving" feedback to the user
@@ -62,18 +80,14 @@ class ManageCourses extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="manage-course-container">
-          <CourseForm
-            course={this.state.course}
-            errors={this.state.errors}
-            allAuthors={this.props.authors}
-            onSave={this.saveCourse}
-            onChange={this.updateCourseState}
-            saving={this.state.saving}
-          />
-        </div>
-      </div>
+      <CourseForm
+        course={this.state.course}
+        errors={this.state.errors}
+        allAuthors={this.props.authors}
+        onSave={this.saveCourse}
+        onChange={this.updateCourseState}
+        saving={this.state.saving}
+      />
     );
   }
 }
