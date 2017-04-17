@@ -6,16 +6,17 @@
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.dev.js",
     "server": "babel-node --presets=es2015 server.js",
-    "build": "babel-node tools/build.js",
     "lint": "npm-run-all lint:*",
     "lint:js": "eslint \"./src/assets/js/!(vendor)/**/*.js{,x}\" \"./src/assets/js/*.js{,x}\" tools",
     "lint:scss": "stylelint \"./src/assets/styles/*.scss\" \"./src/assets/styles/**/*.scss\"",
-    "clean-dist": "npm run remove-dist && mkdir dist",
+    "test": "mocha --watch-extensions jsx --reporter spec ./tools/testSetup.js \"./src/**/*.test.js{,x}\"",
+    "test:watch": "npm run test -- --watch",
     "remove-dist": "rimraf dist",
+    "clean-dist": "npm run remove-dist && mkdir dist",
     "precommit": "npm run lint",
     "prepush": "npm-run-all --parallel lint test",
-    "test": "mocha --watch-extensions jsx --reporter spec ./tools/testSetup.js \"./src/**/*.test.js{,x}\"",
-    "test:watch": "npm run test -- --watch"
+    "prebuild": "npm-run-all clean-dist test lint",
+    "build": "babel-node tools/build.js"
   },
   "eslintConfig": {
     "env": {
