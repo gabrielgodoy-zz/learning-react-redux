@@ -1,6 +1,6 @@
 import expect from 'expect';
 import thunk from 'redux-thunk';
-import nock from 'nock';
+import nock from 'nock'; // To mock HTTP calls
 import configureMockStore from 'redux-mock-store';
 
 import * as courseActions from './CoursesActions';
@@ -36,7 +36,7 @@ describe('Async Actions', () => {
   });
 
   it('should create BEGIN_AJAX_CALL and LOAD_COURSES_SUCCESS when loading courses', (done) => {
-    // Here's an example call to nock.
+    // Here's an example call to nock. We dont need because we are using a mock API in 'api' folder
     // nock('http://example.com/')
     //   .get('/courses')
     //   .reply(200, { body: { course: [{ id: 1, firstName: 'Cory', lastName: 'House'}] }});

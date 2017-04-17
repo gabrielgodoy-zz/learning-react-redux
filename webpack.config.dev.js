@@ -5,8 +5,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
-const context = path.resolve(__dirname, 'src');
-
 module.exports = {
   devtool: 'eval',
   entry: {

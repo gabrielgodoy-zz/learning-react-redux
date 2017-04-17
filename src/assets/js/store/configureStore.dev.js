@@ -1,7 +1,7 @@
 import { createStore, compose, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
-import rootReducer from './reducer';
+import thunk from 'redux-thunk';
+import rootReducer from '../reducer';
 
 export default function configureStore(initialState) {
   /* eslint-disable no-underscore-dangle */
@@ -16,8 +16,8 @@ export default function configureStore(initialState) {
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
-    module.hot.accept('./reducer', () => {
-      const nextReducer = require('./reducer').default; // eslint-disable-line global-require
+    module.hot.accept('../reducer', () => {
+      const nextReducer = require('../reducer').default; // eslint-disable-line global-require
       store.replaceReducer(nextReducer);
     });
   }

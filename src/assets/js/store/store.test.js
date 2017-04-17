@@ -1,8 +1,8 @@
 import expect from 'expect';
 import { createStore } from 'redux';
-import rootReducer from './reducer';
-import initialState from './initialState';
-import * as courseActions from './pages/Courses/CoursesActions';
+import rootReducer from '../reducer';
+import initialState from '../initialState';
+import * as courseActions from '../pages/Courses/CoursesActions';
 
 describe('Store', () => {
   it('Should handle creating courses', () => {
@@ -21,6 +21,7 @@ describe('Store', () => {
     const expected = {
       title: 'Clean Code',
     };
+
     expect(actual).toEqual(expected);
   });
 });

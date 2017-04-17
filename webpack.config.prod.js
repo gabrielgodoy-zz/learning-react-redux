@@ -5,7 +5,12 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+const GLOBALS = {
+  'process.env.NODE_ENV': JSON.stringify('production'),
+};
+
 module.exports = {
+  devtool: 'cheap-module-source-map', // which simplifies the Source Maps to a single mapping per line
   entry: {
     app: [
       './src/assets/js/index.jsx',
@@ -29,7 +34,14 @@ module.exports = {
         test: /\.css$/,
         use: [
           'style-loader',
-          'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              importLoaders: 1,
+              localIdentName: '[path]___[name]__[local]___[hash:base64:5]',
+            },
+          },
         ],
       },
       {
@@ -45,6 +57,9 @@ module.exports = {
                   removeAll: true,
                 },
                 minimize: true,
+                modules: true,
+                importLoaders: 1,
+                localIdentName: '[path]___[name]__[local]___[hash:base64:5]',
               },
             },
             {
@@ -59,7 +74,15 @@ module.exports = {
             },
             'sass-loader',
             {
-              loader: 'import-glob-loader',
+              loader: 'sass-resources-loader',
+              options: {
+                resources: [
+                  './src/assets/styles/settings/*.scss',
+                  './src/assets/styles/tools/_mixins.scss',
+                  './src/assets/styles/tools/_functions.scss',
+                  './node_modules/sass-mq/_mq.scss',
+                ],
+              },
             },
           ],
         }),
@@ -86,6 +109,22 @@ module.exports = {
     extensions: ['.js', '.jsx'],
   },
   plugins: [
+    new webpack.DefinePlugin(GLOBALS),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false,
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      beautify: false,
+      mangle: {
+        screw_ie8: true,
+        keep_fnames: true,
+      },
+      compress: {
+        screw_ie8: true,
+      },
+      comments: false,
+    }),
     new HtmlWebpackPlugin({
       output: './dist',
       filename: 'index.html',
@@ -101,7 +140,7 @@ module.exports = {
   ],
   output: {
     filename: 'bundle.js',
-    publicPath: '/',
+    publicPath: '',
     path: path.resolve('dist'),
   },
 };
