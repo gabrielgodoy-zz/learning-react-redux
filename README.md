@@ -1,6 +1,4 @@
-# React boilerplate
-
-Experimentation project with nice tech put together
+# React with Redux boilerplate
 
 ---
 

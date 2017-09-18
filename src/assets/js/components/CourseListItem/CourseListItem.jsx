@@ -6,24 +6,24 @@ const CourseListItem = ({ course }) => (
   <div styleName="course-item">
     <Link to={`/course/${course.id}`} styleName="title">{course.title}</Link>
     <p styleName="length">
-      Length:
+      Duração:
       <span styleName="value">
-        { course.length }
+        {course.length}
       </span>
     </p>
     <p styleName="author">
       Author
       <span styleName="value">
-        { course.authorId }
+        {course.authorId}
       </span>
     </p>
     <p styleName="category">
       Category
       <span styleName="value">
-        { course.category }
+        {course.category}
       </span>
     </p>
-    <a styleName="link" href={course.watchHref}>Watch</a>
+    <a styleName="link" href={course.watchHref}>Veja</a>
   </div>
 );
 

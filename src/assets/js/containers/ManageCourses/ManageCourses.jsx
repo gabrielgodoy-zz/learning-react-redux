@@ -18,22 +18,23 @@ export class ManageCourses extends React.Component {
       saving: false,
     };
 
-    // Bind correct 'this' context
+    // Crie o bind do 'this' corretamente
     this.saveCourse = this.saveCourse.bind(this);
     this.updateCourseState = this.updateCourseState.bind(this);
   }
 
-  // Update state when props change, in  this case, when courses comes from ajax call
+  // Estado de atualização quando os props mudam,
+  // neste caso, quando os cursos vem de uma chamada ajax
   componentWillReceiveProps(nextProps) {
     const courseIdChanged = this.props.course.id !== nextProps.course.id;
     if (courseIdChanged) {
-      // Populate form when existing course is loaded directly
+      // Popula formulário quando o curso existente é carregado diretamente
       this.setState({ course: Object.assign({}, nextProps.course) });
     }
   }
 
   updateCourseState(event) {
-    const field = event.target.name; // Each form field has a name
+    const field = event.target.name; // Cada campo do formulário tem um nome
     const course = this.state.course;
     course[field] = event.target.value;
     return this.setState({ course });
@@ -66,17 +67,17 @@ export class ManageCourses extends React.Component {
       return;
     }
 
-    // Use local state outside of redux, in the case when data
-    // that the rest of the app will not care about, like a "saving" feedback to the user
+    // Use o estado local fora do redux, no caso de dados
+    // que o resto do aplicativo não se importará, como um feedback de "salvar" para o usuário
     this.setState({ saving: true });
 
-    // Here I am capable of using saveCourse because of mapDispatchToProps
-    this.props.actions.saveCourse(this.state.course) // Thunk returns promises
-        .then(() => this.redirect())
-        .catch((error) => {
-          toastr.error(error);
-          this.setState({ saving: false });
-        });
+    // Aqui é possível usar o saveCourse por causa do MapDispatchToProps
+    this.props.actions.saveCourse(this.state.course) // Thunk retorna promises
+      .then(() => this.redirect())
+      .catch((error) => {
+        toastr.error(error);
+        this.setState({ saving: false });
+      });
   }
 
   render() {
@@ -118,12 +119,12 @@ function getCourseById(courses, id) {
   return null;
 }
 
-// Define what state will be available on this component via props
-// Represent states from the store
+// Defina que estado estará disponível neste componente através de props
+// Representa estados da store
 function mapStateToProps(state, ownProps) {
-  const courseId = ownProps.match.params.id; // From the path /course/:id
+  const courseId = ownProps.match.params.id; // Do caminho /course/:id
 
-  let course = { // Empty course
+  let course = { // Curso vazio
     id: '',
     title: '',
     watchRef: '',
@@ -132,7 +133,8 @@ function mapStateToProps(state, ownProps) {
     category: '',
   };
 
-  // Don't try to get new courses when no courses are available yet, wait for Ajax call to finish
+  // Não obtenha novos cursos quando ainda não há cursos disponíveis,
+  // aguarde até que a chamada do Ajax termine
   const courseExist = state.courses.length;
 
   if (courseId && courseExist) {

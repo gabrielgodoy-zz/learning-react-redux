@@ -42,6 +42,6 @@ describe('Course Reducer', () => {
     // assert
     expect(updatedCourse.title).toEqual('New Title');
     expect(untouchedCourse.title).toEqual('A');
-    expect(newState.length).toEqual(3); // Expect three items in state by now
+    expect(newState.length).toEqual(3);
   });
 });

@@ -9,15 +9,15 @@ module.exports = {
   devtool: 'eval',
   entry: {
     app: [
-      // activate HMR for React
+      // Ativa HMR para o React
       'react-hot-loader/patch',
 
-      // bundle the client for webpack-dev-server
-      // and connect to the provided endpoint
+      // Junta o client para o webpack-dev-server
+      // e conecta o endpoint declarado
       'webpack-dev-server/client?http://localhost:3000',
 
-      // bundle the client for hot reloading
-      // only- means to only hot reload for successful updates
+      // Junta o client para hot reloading
+      // only- significa hot reload somente para updates com sucesso
       'webpack/hot/only-dev-server',
 
       './src/assets/js/index.jsx',
@@ -46,7 +46,9 @@ module.exports = {
                   'react-css-modules',
                   {
                     filetypes: {
-                      '.scss': 'postcss-scss',
+                      '.scss': {
+                        syntax: 'postcss-scss',
+                      },
                     },
                   },
                 ],
@@ -139,10 +141,10 @@ module.exports = {
       template: './src/index.html',
     }),
 
-    // enable HMR globally
+    // Habilita HMR globalmente
     new webpack.HotModuleReplacementPlugin(),
 
-    // prints more readable module names in the browser console on HMR updates
+    // Imprime o nome dos módulos de forma mais legível no console do navegador em atualizações HMR
     new webpack.NamedModulesPlugin(),
 
     new CopyWebpackPlugin([

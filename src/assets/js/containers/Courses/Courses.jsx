@@ -16,15 +16,15 @@ class Courses extends React.Component {
       },
     };
 
-    // On JS classes we need to set correct bindings
-    // Binding correct 'this' context
+    // Nas classes de JS, precisamos definir o binding correto
+    // Definindo o contexto do 'this'
     this.onTitleChange = this.onTitleChange.bind(this);
     this.onClickSave = this.onClickSave.bind(this);
     this.redirectToAddCoursePage = this.redirectToAddCoursePage.bind(this);
-    // The bind to the correct 'this' could have been done inside the render function, like that:
+    // O bind para o 'this' correto poderia ter sido feito dentro da função de render, assim:
     // <input onChange={this.onTitleChange.bind(this)} />
-    // but it has performance issues because by doing that you are recreting that function
-    // each time the render function runs
+    // mas tem problemas de desempenho, porque ao fazer isso, você está recriando essa função
+    // cada vez que a função de render é executada
   }
 
   onTitleChange(event) {
@@ -75,21 +75,21 @@ Courses.propTypes = {
   }).isRequired,
 };
 
-// Define states that will be available on this component as props
+// Defina estados que estarão disponíveis neste componente como props
 function mapStateToProps(state) { // eslint-disable-line
   return {
     courses: state.courses,
   };
 }
 
-// bindActionCreators makes mapDispatchToProps more terse
-// bindActionCreators Maps all the action and wraps it in the dispatch
+// bindActionCreators torna o MapDispatchToProps mais conciso
+// bindActionCreators Mapeia toda a action e envolve-a no dispatch
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(coursesActions, dispatch),
   };
 }
 
-// Define actions that will be available on this component as props
-// When mapDispatchToProps is not defined, the component will have 'dispatch' property as a prop
+// Defina ações que estarão disponíveis neste componente como props
+// Quando mapDispatchToProps não está definido, o componente terá a propriedade "dispatch" como prop
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Courses));

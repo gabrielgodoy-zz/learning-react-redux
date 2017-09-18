@@ -1,13 +1,13 @@
 import expect from 'expect';
 import thunk from 'redux-thunk';
-import nock from 'nock'; // To mock HTTP calls
+import nock from 'nock'; // Para mockar chamadas HTTP
 import configureMockStore from 'redux-mock-store';
 
 import * as courseActions from './CoursesActions';
 import * as appTypes from '../../App/AppConstants';
 import * as types from './CoursesConstants';
 
-// Test a sync action
+// Testando uma ação assíncrona
 describe('Course Actions', () => {
   describe('createCourseSuccess', () => {
     it('should create a CREATE_COURSE_SUCCESS action', () => {
@@ -36,7 +36,9 @@ describe('Async Actions', () => {
   });
 
   it('should create BEGIN_AJAX_CALL and LOAD_COURSES_SUCCESS when loading courses', (done) => {
-    // Here's an example call to nock. We dont need because we are using a mock API in 'api' folder
+    // Aqui está um exemplo de chamada para nock.
+    // Não precisamos porque estamos usando uma API simulada na pasta 'api'
+
     // nock('http://example.com/')
     //   .get('/courses')
     //   .reply(200, { body: { course: [{ id: 1, firstName: 'Cory', lastName: 'House'}] }});

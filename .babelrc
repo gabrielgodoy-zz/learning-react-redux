@@ -13,8 +13,11 @@
     [
       "react-css-modules",
       {
+        "webpackHotModuleReloading": true,
         "filetypes": {
-          ".scss": "postcss-scss"
+          ".scss": {
+            "syntax": "postcss-scss"
+          }
         }
       }
     ]

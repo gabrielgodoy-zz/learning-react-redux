@@ -1,23 +1,22 @@
 {
-	"extends": "stylelint-config-standard",
-	"ignoreFiles": [
-		"./src/assets/styles/_reset.scss"
-	],
-	"rules": {
-		"max-nesting-depth": 3,
-		"selector-no-id": true,
-		"at-rule-no-vendor-prefix": true,
-		"property-no-vendor-prefix": true,
-		"selector-no-vendor-prefix": true,
-		"value-no-vendor-prefix": true,
-		"string-quotes": "single",
-		"block-no-empty": true,
-		"selector-attribute-quotes": "always",
-		"function-url-quotes": "always",
-		"selector-max-compound-selectors": 3,
-		"selector-no-type": true,
-		"comment-empty-line-before": "always",
-		"comment-no-empty": true,
-		"no-invalid-double-slash-comments": true
-	}
+  "extends": "stylelint-config-standard",
+  "ignoreFiles": [
+    "./src/assets/styles/_reset.scss"
+  ],
+  "rules": {
+    "max-nesting-depth": 3,
+    "at-rule-no-vendor-prefix": true,
+    "property-no-vendor-prefix": true,
+    "selector-no-vendor-prefix": true,
+    "value-no-vendor-prefix": true,
+    "string-quotes": "single",
+    "block-no-empty": true,
+    "selector-attribute-quotes": "always",
+    "function-url-quotes": "always",
+    "selector-max-compound-selectors": 3,
+    "comment-empty-line-before": "always",
+    "comment-no-empty": true,
+    "no-invalid-double-slash-comments": true,
+    "at-rule-no-unknown": null
+  }
 }

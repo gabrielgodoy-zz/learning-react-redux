@@ -24,7 +24,7 @@ export function updateCourseSuccess(course) {
 }
 
 export function loadCourses() {
-  return function (dispatch) { // eslint-disable-line
+  return function(dispatch) { // eslint-disable-line
     dispatch(beginAjaxCall());
     return CourseApi.getAllCourses().then((courses) => {
       dispatch(loadCoursesSuccess(courses));
@@ -34,12 +34,12 @@ export function loadCourses() {
   };
 }
 
-// Save or update a course
+// Salva ou atualiza um curso
 export function saveCourse(course) {
-  return function (dispatch) {  // eslint-disable-line
+  return function(dispatch) {  // eslint-disable-line
     dispatch(beginAjaxCall());
     return CourseApi.saveCourse(course).then(savedCourse => // eslint-disable-line
-      // If has ID you are updating a course
+      // Se tiver ID você está atualizando um curso
       savedCourse.id
         ? dispatch(updateCourseSuccess(savedCourse))
         : dispatch(createCourseSuccess(savedCourse)),

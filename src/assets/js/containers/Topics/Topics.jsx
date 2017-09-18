@@ -12,7 +12,7 @@ const Topics = ({ match }) => (
     </div>
 
     <Route path={`${match.url}/:topicId`} component={TopicHeader} />
-    <Route path={match.url} exact render={() => <p>Please select a topic</p>} />
+    <Route path={match.url} exact render={() => <p>Selecione um tópico</p>} />
   </div>
 );
 

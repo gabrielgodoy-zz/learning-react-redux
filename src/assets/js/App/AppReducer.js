@@ -1,9 +1,10 @@
 import * as types from './AppConstants';
 import initialState from '../initialState';
 
-// If any action types ends with success, subtract one from ajaxCallsInProgress
+// Se alguma ação termina com sucesso, subtrai um de ajaxCallsInProgress
 function actionTypeEndsInSuccess(type) {
   // Checks if Action type string ends with _SUCCESS
+  // Verifica se a string do tipo da ação termina com _SUCCESS
   return type.substring(type.length - 8) === '_SUCCESS';
 }
 

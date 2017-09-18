@@ -5,11 +5,11 @@ const About = () => (
   <div>
     <Helmet>
       <meta charSet="utf-8" />
-      <title>About</title>
+      <title>Sobre</title>
     </Helmet>
 
-    <h2>About</h2>
-    <p>Another page</p>
+    <h2>Sobre</h2>
+    <p>Outra página</p>
   </div>
 );
 

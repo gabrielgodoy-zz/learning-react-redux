@@ -5,11 +5,11 @@ import './App.scss';
 
 import MainHeader from '../components/MainHeader/MainHeader';
 import MainNavigation from '../components/MainNavigation/MainNavigation';
-import Home from '../pages/Home/Home';
-import About from '../pages/About/About';
-import Topics from '../pages/Topics/Topics';
-import Courses from '../pages/Courses/Courses';
-import ManageCoursesPage from '../pages/ManageCourses/ManageCourses';
+import Home from '../containers/Home/Home';
+import About from '../containers/About/About';
+import Topics from '../containers/Topics/Topics';
+import Courses from '../containers/Courses/Courses';
+import ManageCoursesPage from '../containers/ManageCourses/ManageCourses';
 
 const AppContainer = ({ loading }) => (
   <BrowserRouter>

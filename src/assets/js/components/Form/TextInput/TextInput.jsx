@@ -9,18 +9,22 @@ const TextInput = ({ name, label, onChange, placeholder, value, error }) => {
 
   return (
     <div styleName={wrapperClass}>
-      <label htmlFor={name}>{label}</label>
-      <div styleName="field">
-        <input
-          type="text"
-          name={name}
-          styleName="form-control"
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-        />
-        {error && <div styleName="alert alert-danger">{error}</div>}
-      </div>
+      <form>
+        <div styleName="field">
+          <label htmlFor={name}>{label}
+            <input
+              type="text"
+              name={name}
+              id={name}
+              styleName="form-control"
+              placeholder={placeholder}
+              value={value}
+              onChange={onChange}
+            />
+          </label>
+          {error && <div styleName="alert alert-danger">{error}</div>}
+        </div>
+      </form>
     </div>
   );
 };

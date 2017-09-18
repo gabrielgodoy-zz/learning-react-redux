@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
-// AppContainer is a necessary wrapper component for HMR
+// AppContainer é um wrapper necessário para o HMR funcionar
 import { AppContainer } from 'react-hot-loader';
 
 import configureStore from './store/configureStore';
-import { loadCourses } from './pages/Courses/CoursesActions';
-import { loadAuthors } from './pages/ManageCourses/ManageCoursesActions';
+import { loadCourses } from './containers/Courses/CoursesActions';
+import { loadAuthors } from './containers/ManageCourses/ManageCoursesActions';
 
 import '../../../node_modules/toastr/build/toastr.css';
 import '../styles/main.scss';
@@ -15,8 +15,8 @@ import '../styles/teste.css';
 import App from './App/App';
 
 const store = configureStore();
-store.dispatch(loadCourses()); // Fetch initial list of courses
-store.dispatch(loadAuthors()); // Fetch initial list of authors
+store.dispatch(loadCourses()); // Busca lista inicial de cursos
+store.dispatch(loadAuthors()); // Busca lista inicial de autores
 
 const render = (Component) => {
   ReactDOM.render(

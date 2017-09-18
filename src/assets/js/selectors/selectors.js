@@ -1,4 +1,4 @@
-// Data selection or manipulate data on this file
+// Seleção ou manipulação de dados vindos da store
 
 export function authorsFormattedForDropdown(authors) { // eslint-disable-line
   return authors.map(author => (

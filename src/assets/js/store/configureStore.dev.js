@@ -5,7 +5,7 @@ import rootReducer from '../reducer';
 
 export default function configureStore(initialState) {
   /* eslint-disable no-underscore-dangle */
-  // add support for Redux dev tools
+  // Suport para extensão do Chrome "Redux dev tools"
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
   const store = createStore(
     rootReducer,
@@ -15,7 +15,7 @@ export default function configureStore(initialState) {
   /* eslint-enable */
 
   if (module.hot) {
-    // Enable Webpack hot module replacement for reducers
+    // Habilita Webpack hot module replacement para reducers
     module.hot.accept('../reducer', () => {
       const nextReducer = require('../reducer').default; // eslint-disable-line global-require
       store.replaceReducer(nextReducer);
