@@ -1,10 +1,10 @@
-# React with Redux boilerplate
+# React + Redux boilerplate
 
 ---
 
-## Working with this structure
+## Trabalhando com a estrutura
 
-`npm install` or `yarn install` installs dependencies
+`npm install` ou `yarn install` instala dependências
 
 To install [yarn](https://yarnpkg.com/en/) on mac `brew install yarn`
 
@@ -68,7 +68,7 @@ The minimum limit for code coverage is set to 80% in all aspects:
 * Functions > 80%
 * Lines > 80%
 
-If code coverage is less than that you will not be able to commit or push on the project
+If code coverage is less than that you will not be able to commit ou push on the project
 
 ---
 
@@ -80,7 +80,7 @@ If code coverage is less than that you will not be able to commit or push on the
 ### Webpack loaders
 
 * [css-loader](https://github.com/webpack-contrib/css-loader) interprets @import and url() like requires.
-* [dsv-loader](https://github.com/wbkd/dsv-loader) load dsv (e.g. .csv or .tsv) files.
+* [dsv-loader](https://github.com/wbkd/dsv-loader) load dsv (e.g. .csv ou .tsv) files.
 * [eslint-loader](https://github.com/MoOx/eslint-loader) is a loader for webpack
 * [file-loader](https://github.com/webpack-contrib/file-loader) can load any type of file
 * [html-loader](https://github.com/webpack-contrib/html-loader) exports HTML as string. HTML is minimized when the compiler demands

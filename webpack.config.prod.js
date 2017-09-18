@@ -10,7 +10,7 @@ const GLOBALS = {
 };
 
 module.exports = {
-  devtool: 'cheap-module-source-map', // which simplifies the Source Maps to a single mapping per line
+  devtool: 'cheap-module-source-map', // Simplifica os sourcemaps para um único mapeamento por linha
   entry: {
     app: [
       './src/assets/js/index.jsx',
