@@ -88,6 +88,7 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
+              ident: 'postcss',
               plugins() {
                 return [autoprefixer({
                   browsers: ['> 1%', 'last 2 versions'],
