@@ -4,6 +4,14 @@
     "./src/assets/styles/_reset.scss"
   ],
   "rules": {
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": [
+          "global"
+        ]
+      }
+    ],
     "max-nesting-depth": 3,
     "at-rule-no-vendor-prefix": true,
     "property-no-vendor-prefix": true,

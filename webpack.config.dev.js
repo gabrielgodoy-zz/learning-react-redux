@@ -19,7 +19,6 @@ module.exports = {
       // Junta o client para hot reloading
       // only- significa hot reload somente para updates com sucesso
       'webpack/hot/only-dev-server',
-
       './src/assets/js/index.jsx',
     ],
   },
