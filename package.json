@@ -9,7 +9,7 @@
     "lint": "npm-run-all lint:*",
     "lint:js": "eslint \"./src/assets/js/!(vendor)/**/*.js{,x}\" \"./src/apps/**/js/**/*.js{,x}\" tools",
     "lint:scss": "stylelint \"./src/assets/styles/*.scss\" \"./src/assets/styles/**/*.scss\"",
-    "test": "nyc --reporter html mocha --watch-extensions jsx --reporter spec ./tools/testSetup.js \"./src/assets/js/!(vendor)/**/*.js{,x}\"",
+    "test": "nyc --reporter html mocha --watch-extensions jsx --reporter spec ./tools/testSetup.js \"./src/assets/js/**/*.js{,x}\"",
     "test:watch": "npm run test -- --watch",
     "remove-dist": "rimraf dist",
     "clean-dist": "npm run remove-dist && mkdir dist",

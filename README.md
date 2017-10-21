@@ -89,6 +89,13 @@ Dependência Prettier desativada, ainda em estudo:
     * [NYC](https://github.com/istanbuljs/nyc) é a linha de comando para o instanbul
 
 * [redux-mock-store](https://github.com/arnaudbenard/redux-mock-store) Serve para criar uma Store fake para testagem de criadores de ação assíncronos e middlewares do Redux
+* [moxios](https://github.com/axios/moxios) Mock Axios for unit testing
+* [mock-local-storage](https://github.com/letsrock-today/mock-local-storage) LocalStorage fake para rodar testes unitários
+
+
+Ferramentas em avaliação:
+
+* [plato](https://github.com/es-analysis/plato) Analisa a complexidade da funções
 
 ### Regras do teste
 

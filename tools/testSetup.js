@@ -39,10 +39,11 @@ const { JSDOM } = jsdom;
 
 // 5. Define variáveis globais que imitam um navegador
 const exposedProperties = ['window', 'navigator', 'document'];
-const { document } = (new JSDOM('')).window;
+const { document } = (new JSDOM('<!doctype html><html><body><div id="app"></div></body></html>')).window;
 
 global.document = document;
 global.window = document.defaultView;
+
 Object.keys(document.defaultView).forEach((property) => {
   if (typeof global[property] === 'undefined') {
     exposedProperties.push(property);
