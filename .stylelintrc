@@ -3,6 +3,9 @@
   "ignoreFiles": [
     "./src/assets/styles/_reset.scss"
   ],
+  "plugins": [
+    "stylelint-order"
+  ],
   "rules": {
     "selector-pseudo-class-no-unknown": [
       true,

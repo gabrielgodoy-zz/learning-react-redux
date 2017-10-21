@@ -6,6 +6,13 @@
     "stage-0",
     "react"
   ],
+  "env": {
+    "test": {
+      "plugins": [
+        "istanbul"
+      ]
+    }
+  },
   "plugins": [
     "transform-object-rest-spread",
     "babel-plugin-transform-runtime",

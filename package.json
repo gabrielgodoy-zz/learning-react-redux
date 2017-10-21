@@ -7,9 +7,9 @@
     "start": "webpack-dev-server --config webpack.config.dev.js",
     "server": "babel-node --presets=es2015 server.js",
     "lint": "npm-run-all lint:*",
-    "lint:js": "eslint \"./src/assets/js/!(vendor)/**/*.js{,x}\" \"./src/assets/js/*.js{,x}\" tools",
+    "lint:js": "eslint \"./src/assets/js/!(vendor)/**/*.js{,x}\" \"./src/apps/**/js/**/*.js{,x}\" tools",
     "lint:scss": "stylelint \"./src/assets/styles/*.scss\" \"./src/assets/styles/**/*.scss\"",
-    "test": "mocha --watch-extensions jsx --reporter spec ./tools/test.js \"./src/**/*.test.js{,x}\"",
+    "test": "nyc --reporter html mocha --watch-extensions jsx --reporter spec ./tools/testSetup.js \"./src/assets/js/!(vendor)/**/*.js{,x}\"",
     "test:watch": "npm run test -- --watch",
     "remove-dist": "rimraf dist",
     "clean-dist": "npm run remove-dist && mkdir dist",
@@ -30,9 +30,9 @@
       "airbnb"
     ],
     "plugins": [
+      "chai-friendly",
       "react",
-      "jsx-a11y",
-      "chai-friendly"
+      "jsx-a11y"
     ],
     "globals": {
       "window": true,
@@ -43,9 +43,15 @@
       "$": true
     },
     "rules": {
-      "no-unused-expressions": 0,
       "chai-friendly/no-unused-expressions": 2,
-      "jsx-a11y/href-no-hash": "off",
+      "indent": [
+        "error",
+        2,
+        {
+          "MemberExpression": "off",
+          "SwitchCase": 1
+        }
+      ],
       "jsx-a11y/anchor-is-valid": [
         "warn",
         {
@@ -53,7 +59,37 @@
             "invalidHref"
           ]
         }
-      ]
+      ],
+      "jsx-a11y/href-no-hash": "off",
+      "jsx-a11y/label-has-for": [
+        2,
+        {
+          "components": [
+            "Label"
+          ],
+          "required": {
+            "every": [
+              "id"
+            ]
+          },
+          "allowChildren": false
+        }
+      ],
+      "no-unused-expressions": 0,
+      "react/defaultsProps": 0,
+      "react/jsx-sort-props": [
+        2,
+        {
+          "callbacksLast": false,
+          "shorthandFirst": false,
+          "shorthandLast": false,
+          "ignoreCase": true,
+          "noSortAlphabetically": false,
+          "reservedFirst": false
+        }
+      ],
+      "react/require-default-props": 0,
+      "react/sort-prop-types": 2
     },
     "parser": "babel-eslint",
     "parserOptions": {
@@ -63,11 +99,16 @@
       }
     }
   },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
   "dependencies": {
     "axios": "^0.16.2",
     "babel-cli": "^6.24.0",
     "babel-core": "^6.23.1",
     "babel-loader": "^7.1.2",
+    "babel-plugin-istanbul": "^4.1.5",
     "babel-plugin-react-css-modules": "^3.3.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-polyfill": "^6.23.0",
@@ -85,11 +126,10 @@
     "lodash": "^4.17.4",
     "nock": "^9.0.13",
     "normalize.css": "^7.0.0",
+    "nyc": "^11.2.1",
     "open": "0.0.5",
     "postcss-scss": "^1.0.2",
-    "purify-css": "^1.1.9",
     "react": "^15.4.2",
-    "react-addons-test-utils": "^15.5.1",
     "react-dom": "^15.4.2",
     "react-helmet": "^5.0.1",
     "react-hot-loader": "next",
@@ -100,6 +140,7 @@
     "redux-immutable-state-invariant": "^2.0.0",
     "redux-mock-store": "^1.2.3",
     "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.1",
     "sass-mq": "^3.3.2",
     "stylelint": "^8.1.1",
     "toastr": "^2.1.2",
@@ -121,10 +162,12 @@
     "dsv-loader": "^2.0.0",
     "eslint": "^4.7.0",
     "eslint-config-airbnb": "^15.1.0",
+    "eslint-config-prettier": "^2.6.0",
     "eslint-loader": "^1.6.3",
     "eslint-plugin-chai-friendly": "^0.4.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "^7.3.0",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
@@ -137,11 +180,13 @@
     "node-sass": "^4.5.0",
     "npm-run-all": "^4.0.2",
     "postcss-loader": "^2.0.6",
+    "prettier": "^1.7.4",
     "sass-loader": "^6.0.3",
     "sass-resources-loader": "^1.2.0",
     "sinon": "^3.2.1",
     "style-loader": "^0.18.2",
     "stylelint-config-standard": "^17.0.0",
+    "stylelint-order": "^0.7.0",
     "stylelint-webpack-plugin": "^0.9.0",
     "url-loader": "^0.5.8"
   }
