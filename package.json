@@ -26,7 +26,8 @@
     "functions": 80,
     "branches": 80,
     "exclude": [
-      "src/assets/js/**/*.js{,x}"
+      "src/assets/js/**/*.js{,x}",
+      "tools/testSetup.js"
     ]
   },
   "eslintConfig": {
