@@ -9,7 +9,7 @@
     "lint": "npm-run-all lint:*",
     "lint:js": "eslint \"./src/assets/js/!(vendor)/**/*.js{,x}\" \"./src/apps/**/js/**/*.js{,x}\" tools",
     "lint:scss": "stylelint \"./src/assets/styles/*.scss\" \"./src/assets/styles/**/*.scss\"",
-    "test": "nyc --reporter html mocha --watch-extensions jsx --reporter spec ./tools/testSetup.js \"./src/assets/js/**/*.js{,x}\"",
+    "test": "nyc --reporter html mocha --opts .mocharc ./tools/testSetup.js \"./src/assets/js/**/*.js{,x}\"",
     "test:watch": "npm run test -- --watch",
     "remove-dist": "rimraf dist",
     "clean-dist": "npm run remove-dist && mkdir dist",
@@ -17,6 +17,17 @@
     "prepush": "npm-run-all --parallel lint test",
     "prebuild": "npm-run-all clean-dist test lint",
     "build": "babel-node tools/build.js"
+  },
+  "nyc": {
+    "check-coverage": true,
+    "per-file": true,
+    "lines": 80,
+    "statements": 80,
+    "functions": 80,
+    "branches": 80,
+    "exclude": [
+      "src/assets/js/**/*.js{,x}"
+    ]
   },
   "eslintConfig": {
     "env": {
