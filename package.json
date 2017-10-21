@@ -193,6 +193,7 @@
     "npm-run-all": "^4.0.2",
     "postcss-loader": "^2.0.6",
     "prettier": "^1.7.4",
+    "react-addons-test-utils": "^15.6.2",
     "sass-loader": "^6.0.3",
     "sass-resources-loader": "^1.2.0",
     "sinon": "^3.2.1",
