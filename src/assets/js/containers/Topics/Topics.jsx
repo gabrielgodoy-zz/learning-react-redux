@@ -6,13 +6,13 @@ import TopicHeader from '../../components/Topic/Header/Header';
 const Topics = ({ match }) => (
   <div>
     <div className="links">
-      <TopicLink match={match} path="topic-1" label="Topic 1" />
-      <TopicLink match={match} path="topic-2" label="Topic 2" />
-      <TopicLink match={match} path="topic-3" label="Topic 3" />
+      <TopicLink label="Topic 1" match={match} path="topic-1" />
+      <TopicLink label="Topic 2" match={match} path="topic-2" />
+      <TopicLink label="Topic 3" match={match} path="topic-3" />
     </div>
 
-    <Route path={`${match.url}/:topicId`} component={TopicHeader} />
-    <Route path={match.url} exact render={() => <p>Selecione um tópico</p>} />
+    <Route component={TopicHeader} path={`${match.url}/:topicId`} />
+    <Route exact path={match.url} render={() => <p>Selecione um tópico</p>} />
   </div>
 );
 

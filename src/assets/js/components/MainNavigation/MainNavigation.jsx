@@ -5,11 +5,11 @@ import LoadingDots from '../LoadingDots/LoadingDots';
 
 const MainNavigation = ({ loading }) => (
   <nav styleName="main-navigation">
-    <NavLink styleName="navigation-item" activeClassName="active" exact to="/">Home</NavLink>
-    <NavLink styleName="navigation-item" activeClassName="active" to="/about">About</NavLink>
-    <NavLink styleName="navigation-item" activeClassName="active" to="/courses">Courses </NavLink>
-    <NavLink styleName="navigation-item" activeClassName="active" to="/topics">Topics</NavLink>
-    {loading && <LoadingDots interval={200} dots={20} />}
+    <NavLink activeClassName="active" exact styleName="navigation-item" to="/">Home</NavLink>
+    <NavLink activeClassName="active" styleName="navigation-item" to="/about">About</NavLink>
+    <NavLink activeClassName="active" styleName="navigation-item" to="/courses">Courses </NavLink>
+    <NavLink activeClassName="active" styleName="navigation-item" to="/topics">Topics</NavLink>
+    {loading && <LoadingDots dots={20} interval={200} />}
   </nav>
 );
 

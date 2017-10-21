@@ -3,7 +3,7 @@ import CourseListItem from '../CourseListItem/CourseListItem';
 
 const CoursesList = ({ courses }) => (
   <div>
-    {courses.map(course => <CourseListItem key={course.id} course={course} />)}
+    {courses.map(course => <CourseListItem course={course} key={course.id} />)}
   </div>
 );
 

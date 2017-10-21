@@ -9,11 +9,11 @@ const TopicLink = ({ match, path, label }) => (
 );
 
 TopicLink.propTypes = {
+  label: PropTypes.string.isRequired,
   match: PropTypes.shape({
     url: PropTypes.string.isRequired,
   }).isRequired,
   path: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
 };
 
 export default TopicLink;

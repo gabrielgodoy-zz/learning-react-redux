@@ -17,12 +17,12 @@ const AppContainer = ({ loading }) => (
       <MainHeader title="This is the header" />
       <div styleName="container">
         <MainNavigation loading={loading} />
-        <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} />
-        <Route path="/topics" component={Topics} />
-        <Route path="/courses" component={Courses} />
-        <Route exact path="/course" component={ManageCoursesPage} />
-        <Route path="/course/:id" component={ManageCoursesPage} />
+        <Route component={Home} exact path="/" />
+        <Route component={About} path="/about" />
+        <Route component={Topics} path="/topics" />
+        <Route component={Courses} path="/courses" />
+        <Route component={ManageCoursesPage} exact path="/course" />
+        <Route component={ManageCoursesPage} path="/course/:id" />
       </div>
     </div>
   </BrowserRouter>

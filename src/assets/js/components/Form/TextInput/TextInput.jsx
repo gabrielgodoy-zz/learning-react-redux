@@ -13,13 +13,13 @@ const TextInput = ({ name, label, onChange, placeholder, value, error }) => {
         <div styleName="field">
           <label htmlFor={name}>{label}
             <input
-              type="text"
-              name={name}
               id={name}
-              styleName="form-control"
-              placeholder={placeholder}
-              value={value}
+              name={name}
               onChange={onChange}
+              placeholder={placeholder}
+              styleName="form-control"
+              type="text"
+              value={value}
             />
           </label>
           {error && <div styleName="alert alert-danger">{error}</div>}
@@ -36,12 +36,12 @@ TextInput.defaultProps = {
 };
 
 TextInput.propTypes = {
-  name: PropTypes.string.isRequired,
+  error: PropTypes.string,
   label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
   value: PropTypes.string,
-  error: PropTypes.string,
 };
 
 export default TextInput;

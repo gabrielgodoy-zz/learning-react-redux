@@ -13,9 +13,9 @@ const SelectInput = ({ name, label, onChange, defaultOption, value, error, optio
         }
         <select
           name={name}
-          value={value}
           onChange={onChange}
           styleName="form-control"
+          value={value}
         >
           <option value="">{defaultOption}</option>
           {
@@ -36,13 +36,13 @@ SelectInput.defaultProps = {
 };
 
 SelectInput.propTypes = {
-  name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
   defaultOption: PropTypes.string.isRequired,
-  value: PropTypes.string,
   error: PropTypes.string,
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(PropTypes.object),
+  value: PropTypes.string,
 };
 
 export default SelectInput;

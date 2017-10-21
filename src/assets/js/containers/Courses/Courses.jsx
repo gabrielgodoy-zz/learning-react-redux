@@ -52,10 +52,10 @@ class Courses extends React.Component {
 
         <h2>Courses</h2>
         <input
-          type="submit"
-          value="Add course"
           className="btn btn-primary"
           onClick={this.redirectToAddCoursePage}
+          type="submit"
+          value="Add course"
         />
         <CourseList courses={courses} />
       </div>
@@ -64,12 +64,12 @@ class Courses extends React.Component {
 }
 
 Courses.propTypes = {
-  courses: PropTypes.arrayOf(React.PropTypes.shape({
-    title: React.PropTypes.string.isRequired,
-  })).isRequired,
   actions: PropTypes.shape({
     createCourses: PropTypes.func,
   }).isRequired,
+  courses: PropTypes.arrayOf(React.PropTypes.shape({
+    title: React.PropTypes.string.isRequired,
+  })).isRequired,
   history: PropTypes.shape({
     push: PropTypes.func,
   }).isRequired,

@@ -6,66 +6,66 @@ const CourseForm = ({ course, allAuthors, onSave, onChange, saving, errors }) =>
   <form>
     <h1>Manage Course</h1>
     <TextInput
-      name="title"
-      label="Title"
-      value={course.title}
-      onChange={onChange}
       error={errors.title}
+      label="Title"
+      name="title"
+      onChange={onChange}
+      value={course.title}
     />
 
     <SelectInput
-      name="authorId"
-      label="Author"
-      value={course.authorId}
       defaultOption="Select Author"
-      options={allAuthors}
-      onChange={onChange}
       error={errors.authorId}
+      label="Author"
+      name="authorId"
+      onChange={onChange}
+      options={allAuthors}
+      value={course.authorId}
     />
 
     <TextInput
-      name="category"
-      label="Category"
-      value={course.category}
-      onChange={onChange}
       error={errors.category}
+      label="Category"
+      name="category"
+      onChange={onChange}
+      value={course.category}
     />
 
     <TextInput
-      name="length"
-      label="Length"
-      value={course.length}
-      onChange={onChange}
       error={errors.length}
+      label="Length"
+      name="length"
+      onChange={onChange}
+      value={course.length}
     />
 
     <input
-      type="submit"
-      disabled={saving}
-      value={saving ? 'Saving...' : 'Save'}
       className="btn btn-primary"
+      disabled={saving}
       onClick={onSave}
+      type="submit"
+      value={saving ? 'Saving...' : 'Save'}
     />
   </form>
 );
 
 CourseForm.propTypes = {
+  allAuthors: PropTypes.arrayOf(PropTypes.object).isRequired,
   course: PropTypes.shape({
     title: PropTypes.string.isRequired,
     authorId: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
     length: PropTypes.string.isRequired,
   }).isRequired,
-  allAuthors: PropTypes.arrayOf(PropTypes.object).isRequired,
-  onSave: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  saving: PropTypes.bool.isRequired,
   errors: PropTypes.shape({
     title: PropTypes.string,
     authorId: PropTypes.string,
     category: PropTypes.string,
     length: PropTypes.string,
   }).isRequired,
+  onChange: PropTypes.func.isRequired,
+  onSave: PropTypes.func.isRequired,
+  saving: PropTypes.bool.isRequired,
 };
 
 export default CourseForm;

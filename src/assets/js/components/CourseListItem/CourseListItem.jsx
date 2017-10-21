@@ -4,7 +4,7 @@ import './CourseListItem.scss';
 
 const CourseListItem = ({ course }) => (
   <div styleName="course-item">
-    <Link to={`/course/${course.id}`} styleName="title">{course.title}</Link>
+    <Link styleName="title" to={`/course/${course.id}`}>{course.title}</Link>
     <p styleName="length">
       Duração:
       <span styleName="value">
@@ -23,7 +23,7 @@ const CourseListItem = ({ course }) => (
         {course.category}
       </span>
     </p>
-    <a styleName="link" href={course.watchHref}>Veja</a>
+    <a href={course.watchHref} styleName="link">Veja</a>
   </div>
 );
 

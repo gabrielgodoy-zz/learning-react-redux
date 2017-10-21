@@ -12,8 +12,8 @@ export class ManageCourses extends React.Component {
     super(props, context);
 
     this.state = {
-      course: Object.assign({}, this.props.course),
       authors: [],
+      course: Object.assign({}, this.props.course),
       errors: {},
       saving: false,
     };
@@ -83,11 +83,11 @@ export class ManageCourses extends React.Component {
   render() {
     return (
       <CourseForm
+        allAuthors={this.props.authors}
         course={this.state.course}
         errors={this.state.errors}
-        allAuthors={this.props.authors}
-        onSave={this.saveCourse}
         onChange={this.updateCourseState}
+        onSave={this.saveCourse}
         saving={this.state.saving}
       />
     );
@@ -98,9 +98,7 @@ ManageCourses.propTypes = {
   actions: PropTypes.shape({
     saveCourse: PropTypes.func.isRequired,
   }).isRequired,
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
-  }).isRequired,
+  authors: PropTypes.arrayOf(PropTypes.object).isRequired,
   course: PropTypes.shape({
     id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -108,7 +106,9 @@ ManageCourses.propTypes = {
     category: PropTypes.string.isRequired,
     length: PropTypes.string.isRequired,
   }).isRequired,
-  authors: PropTypes.arrayOf(PropTypes.object).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 function getCourseById(courses, id) {
